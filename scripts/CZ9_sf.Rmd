@@ -3,6 +3,11 @@ title: "R Notebook"
 output: html_notebook
 ---
 
+---
+title: "R Notebook"
+output: html_notebook
+---
+
 ```{r}
 library(tidyverse)    # System of packages for data manipulation 
 library(tidyselect)   # Backend for selecting functions of the tidyverse
@@ -371,4 +376,5 @@ ggplot(annualGHG, aes(x = wh_type , y = annual_GHG)) + geom_col(aes(fill = type)
    theme(axis.text.x = element_text(size=12, angle=45))
 
 ```
+
 
