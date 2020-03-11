@@ -30,52 +30,52 @@ knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 
 # Plot by CZ_145
 ```{r}
-CZ1_145 <- read_csv("input/cz1_145.csv")
+CZ12_145 <- read_csv("input/cz12_145.csv")
 ```
 
 
 ```{r}
 to_kWh <- 3.412 #conversion from kBtu(th) to kWh
 
-CZ1_145 <- CZ1_145 %>%
-  mutate(Dhw_CZ1_ERWH_SF_bc_kWh = Dhw_CZ1_ERWH_SF_bc / to_kWh, 
-         Dhw_CZ1_HPWH_SF_bc_kWh = Dhw_CZ1_HPWH_SF_bc / to_kWh, 
-         Dhw_CZ1_HPWH_bu_SF_bc_kWh = Dhw_CZ1_HPWH_bu_SF_bc / to_kWh,
-         Dhw_CZ1_HPWH_bu2_SF_bc_kWh = Dhw_CZ1_HPWH_bu2_SF_bc / to_kWh, 
-         Dhw_CZ1_ERWH_SF_3_to_6_kWh = Dhw_CZ1_ERWH_SF_3_to_6 / to_kWh, 
-         Dhw_CZ1_HPWH_SF_3_to_6_kWh = Dhw_CZ1_HPWH_SF_3_to_6 /to_kWh, 
-         Dhw_CZ1_HPWH_bu_SF_3_to_6_kWh = Dhw_CZ1_HPWH_bu_SF_3_to_6 / to_kWh,
-         Dhw_CZ1_HPWH_bu2_SF_3_to_6_kWh = Dhw_CZ1_HPWH_bu2_SF_3_to_6 / to_kWh,
-         Dhw_CZ1_ERWH_SF_10_to_1_kWh = Dhw_CZ1_ERWH_SF_10_to_1 / to_kWh,
-         Dhw_CZ1_HPWH_SF_10_to_1_kWh = Dhw_CZ1_HPWH_SF_10_to_1 / to_kWh,
-         Dhw_CZ1_HPWH_bu_SF_10_to_1_kWh = Dhw_CZ1_HPWH_bu_SF_10_to_1 / to_kWh,
-         Dhw_CZ1_HPWH_bu2_SF_10_to_1_kWh = Dhw_CZ1_HPWH_bu2_SF_10_to_1 / to_kWh,
+CZ12_145 <- CZ12_145 %>%
+  mutate(Dhw_CZ12_ERWH_SF_bc_kWh = Dhw_CZ12_ERWH_SF_bc / to_kWh, 
+         Dhw_CZ12_HPWH_SF_bc_kWh = Dhw_CZ12_HPWH_SF_bc / to_kWh, 
+         Dhw_CZ12_HPWH_bu_SF_bc_kWh = Dhw_CZ12_HPWH_bu_SF_bc / to_kWh,
+         Dhw_CZ12_HPWH_bu2_SF_bc_kWh = Dhw_CZ12_HPWH_bu2_SF_bc / to_kWh, 
+         Dhw_CZ12_ERWH_SF_3_to_6_kWh = Dhw_CZ12_ERWH_SF_3_to_6 / to_kWh, 
+         Dhw_CZ12_HPWH_SF_3_to_6_kWh = Dhw_CZ12_HPWH_SF_3_to_6 /to_kWh, 
+         Dhw_CZ12_HPWH_bu_SF_3_to_6_kWh = Dhw_CZ12_HPWH_bu_SF_3_to_6 / to_kWh,
+         Dhw_CZ12_HPWH_bu2_SF_3_to_6_kWh = Dhw_CZ12_HPWH_bu2_SF_3_to_6 / to_kWh,
+         Dhw_CZ12_ERWH_SF_10_to_1_kWh = Dhw_CZ12_ERWH_SF_10_to_1 / to_kWh,
+         Dhw_CZ12_HPWH_SF_10_to_1_kWh = Dhw_CZ12_HPWH_SF_10_to_1 / to_kWh,
+         Dhw_CZ12_HPWH_bu_SF_10_to_1_kWh = Dhw_CZ12_HPWH_bu_SF_10_to_1 / to_kWh,
+         Dhw_CZ12_HPWH_bu2_SF_10_to_1_kWh = Dhw_CZ12_HPWH_bu2_SF_10_to_1 / to_kWh,
          #multifamily
-         Dhw_CZ1_ERWH_MF_bc_kWh = Dhw_CZ1_ERWH_MF_bc / to_kWh,
-         Dhw_CZ1_HPWH_MF_bc_kWh = Dhw_CZ1_HPWH_MF_bc / to_kWh,
-         Dhw_CZ1_HPWH_bu_MF_bc_kWh = Dhw_CZ1_HPWH_bu_MF_bc / to_kWh,
-         Dhw_CZ1_HPWH_bu2_MF_bc_kWh = Dhw_CZ1_HPWH_bu2_MF_bc / to_kWh,
-         Dhw_CZ1_ERWH_MF_3_to_6_kWh = Dhw_CZ1_ERWH_MF_3_to_6 / to_kWh,
-         Dhw_CZ1_HPWH_MF_3_to_6_kWh = Dhw_CZ1_HPWH_MF_3_to_6 / to_kWh,
-         Dhw_CZ1_HPWH_bu_MF_3_to_6_kWh = Dhw_CZ1_HPWH_bu_MF_3_to_6 / to_kWh,
-         Dhw_CZ1_HPWH_bu2_MF_3_to_6_kWh = Dhw_CZ1_HPWH_bu2_MF_3_to_6 / to_kWh,
-         Dhw_CZ1_ERWH_MF_10_to_1_kWh = Dhw_CZ1_ERWH_MF_10_to_1 / to_kWh,
-         Dhw_CZ1_HPWH_MF_10_to_1_kWh = Dhw_CZ1_HPWH_MF_10_to_1 / to_kWh,
-         Dhw_CZ1_HPWH_bu_MF_10_to_1_kWh = Dhw_CZ1_HPWH_bu_MF_10_to_1 / to_kWh,
-         Dhw_CZ1_HPWH_bu2_MF_10_to_1_kWh = Dhw_CZ1_HPWH_bu2_MF_10_to_1 / to_kWh)
+         Dhw_CZ12_ERWH_MF_bc_kWh = Dhw_CZ12_ERWH_MF_bc / to_kWh,
+         Dhw_CZ12_HPWH_MF_bc_kWh = Dhw_CZ12_HPWH_MF_bc / to_kWh,
+         Dhw_CZ12_HPWH_bu_MF_bc_kWh = Dhw_CZ12_HPWH_bu_MF_bc / to_kWh,
+         Dhw_CZ12_HPWH_bu2_MF_bc_kWh = Dhw_CZ12_HPWH_bu2_MF_bc / to_kWh,
+         Dhw_CZ12_ERWH_MF_3_to_6_kWh = Dhw_CZ12_ERWH_MF_3_to_6 / to_kWh,
+         Dhw_CZ12_HPWH_MF_3_to_6_kWh = Dhw_CZ12_HPWH_MF_3_to_6 / to_kWh,
+         Dhw_CZ12_HPWH_bu_MF_3_to_6_kWh = Dhw_CZ12_HPWH_bu_MF_3_to_6 / to_kWh,
+         Dhw_CZ12_HPWH_bu2_MF_3_to_6_kWh = Dhw_CZ12_HPWH_bu2_MF_3_to_6 / to_kWh,
+         Dhw_CZ12_ERWH_MF_10_to_1_kWh = Dhw_CZ12_ERWH_MF_10_to_1 / to_kWh,
+         Dhw_CZ12_HPWH_MF_10_to_1_kWh = Dhw_CZ12_HPWH_MF_10_to_1 / to_kWh,
+         Dhw_CZ12_HPWH_bu_MF_10_to_1_kWh = Dhw_CZ12_HPWH_bu_MF_10_to_1 / to_kWh,
+         Dhw_CZ12_HPWH_bu2_MF_10_to_1_kWh = Dhw_CZ12_HPWH_bu2_MF_10_to_1 / to_kWh)
 ```
 
 #ERWH
 climate zone 1 (Arcata) overheat to 145F
 ```{r}
-CZ1_145_SF_summary_ERWH <- CZ1_145 %>%
+CZ12_145_SF_summary_ERWH <- CZ12_145 %>%
   group_by(Mon,Hr) %>%
-  summarise(avg_Dhw_CZ1_ERWH_SF_bc_kWh = mean(Dhw_CZ1_ERWH_SF_bc_kWh), 
-            avg_Dhw_CZ1_ERWH_SF_3_to_6_kWh = mean(Dhw_CZ1_ERWH_SF_3_to_6_kWh), 
-            avg_Dhw_CZ1_ERWH_SF_10_to_1_kWh = mean(Dhw_CZ1_ERWH_SF_10_to_1_kWh))
+  summarise(avg_Dhw_CZ12_ERWH_SF_bc_kWh = mean(Dhw_CZ12_ERWH_SF_bc_kWh), 
+            avg_Dhw_CZ12_ERWH_SF_3_to_6_kWh = mean(Dhw_CZ12_ERWH_SF_3_to_6_kWh), 
+            avg_Dhw_CZ12_ERWH_SF_10_to_1_kWh = mean(Dhw_CZ12_ERWH_SF_10_to_1_kWh))
 
-CZ1_145_SF_summary_ERWH_melted <- CZ1_145_SF_summary_ERWH %>% gather(key = "wh_type", value = "kwh", c(-Mon,-Hr))
-ggplot(CZ1_145_SF_summary_ERWH_melted, aes(x = Hr, y = kwh)) + geom_line(aes(color = wh_type)) + theme_gray(base_size = 13) + facet_wrap("Mon") +
+CZ12_145_SF_summary_ERWH_melted <- CZ12_145_SF_summary_ERWH %>% gather(key = "wh_type", value = "kwh", c(-Mon,-Hr))
+ggplot(CZ12_145_SF_summary_ERWH_melted, aes(x = Hr, y = kwh)) + geom_line(aes(color = wh_type)) + theme_gray(base_size = 13) + facet_wrap("Mon") +
   labs(x ="Hour of Day", y= "Energy (kWh)") +
     theme_pack +
   
@@ -84,25 +84,25 @@ ggplot(CZ1_145_SF_summary_ERWH_melted, aes(x = Hr, y = kwh)) + geom_line(aes(col
                         labels = c("10 to 1", 
                                    "3 to 6", 
                                    "base case"), 
-                        values = c("avg_Dhw_CZ1_ERWH_SF_10_to_1_kWh" = "red", 
-                                   "avg_Dhw_CZ1_ERWH_SF_3_to_6_kWh" = "blue", 
-                                   "avg_Dhw_CZ1_ERWH_SF_bc_kWh" = "black"))
+                        values = c("avg_Dhw_CZ12_ERWH_SF_10_to_1_kWh" = "red", 
+                                   "avg_Dhw_CZ12_ERWH_SF_3_to_6_kWh" = "blue", 
+                                   "avg_Dhw_CZ12_ERWH_SF_bc_kWh" = "black"))
 ```
 
 
 #HPWH_bu
 ```{r}
-CZ1_145_SF_summary_HPWH_bu <- CZ1_145 %>%
+CZ12_145_SF_summary_HPWH_bu <- CZ12_145 %>%
   group_by(Mon,Hr) %>%
-  summarise(avg_Dhw_CZ1_HPWH_bu_SF_bc_kWh = mean(Dhw_CZ1_HPWH_bu_SF_bc_kWh),
-            avg_Dhw_CZ1_HPWH_bu2_SF_bc_kWh = mean(Dhw_CZ1_HPWH_bu2_SF_bc_kWh),
-            avg_Dhw_CZ1_HPWH_bu_SF_3_to_6_kWh = mean(Dhw_CZ1_HPWH_bu_SF_3_to_6_kWh),
-            avg_Dhw_CZ1_HPWH_bu2_SF_3_to_6_kWh = mean(Dhw_CZ1_HPWH_bu2_SF_3_to_6_kWh),
-            avg_Dhw_CZ1_HPWH_bu_SF_10_to_1_kWh = mean(Dhw_CZ1_HPWH_bu_SF_10_to_1_kWh),
-            avg_Dhw_CZ1_HPWH_bu2_SF_10_to_1_kWh = mean(Dhw_CZ1_HPWH_bu2_SF_10_to_1_kWh))
+  summarise(avg_Dhw_CZ12_HPWH_bu_SF_bc_kWh = mean(Dhw_CZ12_HPWH_bu_SF_bc_kWh),
+            avg_Dhw_CZ12_HPWH_bu2_SF_bc_kWh = mean(Dhw_CZ12_HPWH_bu2_SF_bc_kWh),
+            avg_Dhw_CZ12_HPWH_bu_SF_3_to_6_kWh = mean(Dhw_CZ12_HPWH_bu_SF_3_to_6_kWh),
+            avg_Dhw_CZ12_HPWH_bu2_SF_3_to_6_kWh = mean(Dhw_CZ12_HPWH_bu2_SF_3_to_6_kWh),
+            avg_Dhw_CZ12_HPWH_bu_SF_10_to_1_kWh = mean(Dhw_CZ12_HPWH_bu_SF_10_to_1_kWh),
+            avg_Dhw_CZ12_HPWH_bu2_SF_10_to_1_kWh = mean(Dhw_CZ12_HPWH_bu2_SF_10_to_1_kWh))
 
-CZ1_145_SF_summary_HPWH_bu_melted <- CZ1_145_SF_summary_HPWH_bu %>% gather(key = "wh_type", value = "kwh", c(-Mon,-Hr))
-ggplot(CZ1_145_SF_summary_HPWH_bu_melted, aes(x = Hr, y = kwh)) + geom_line(aes(color = wh_type)) + theme_gray(base_size = 13) + facet_wrap("Mon") +
+CZ12_145_SF_summary_HPWH_bu_melted <- CZ12_145_SF_summary_HPWH_bu %>% gather(key = "wh_type", value = "kwh", c(-Mon,-Hr))
+ggplot(CZ12_145_SF_summary_HPWH_bu_melted, aes(x = Hr, y = kwh)) + geom_line(aes(color = wh_type)) + theme_gray(base_size = 13) + facet_wrap("Mon") +
    labs(x ="Hour of Day", y= "Energy (kWh)")+
     theme_pack +
   
@@ -114,27 +114,27 @@ ggplot(CZ1_145_SF_summary_HPWH_bu_melted, aes(x = Hr, y = kwh)) + geom_line(aes(
                                    "10 to 1 bu",
                                    "3 to 6 bu",
                                    "base case bu"), 
-                        values = c("avg_Dhw_CZ1_HPWH_bu_SF_bc_kWh" = "black", 
-                                   "avg_Dhw_CZ1_HPWH_bu2_SF_bc_kWh" = "gray",
-                                   "avg_Dhw_CZ1_HPWH_bu_SF_3_to_6_kWh" = "blue", 
-                                   "avg_Dhw_CZ1_HPWH_bu2_SF_3_to_6_kWh" = "skyblue",
-                                   "avg_Dhw_CZ1_HPWH_bu_SF_10_to_1_kWh" = "red",
-                                   "avg_Dhw_CZ1_HPWH_bu2_SF_10_to_1_kWh" = "orange"))
+                        values = c("avg_Dhw_CZ12_HPWH_bu_SF_bc_kWh" = "black", 
+                                   "avg_Dhw_CZ12_HPWH_bu2_SF_bc_kWh" = "gray",
+                                   "avg_Dhw_CZ12_HPWH_bu_SF_3_to_6_kWh" = "blue", 
+                                   "avg_Dhw_CZ12_HPWH_bu2_SF_3_to_6_kWh" = "skyblue",
+                                   "avg_Dhw_CZ12_HPWH_bu_SF_10_to_1_kWh" = "red",
+                                   "avg_Dhw_CZ12_HPWH_bu2_SF_10_to_1_kWh" = "orange"))
 ```
 
 #climate zone 1 natural gas
 ```{r}
 to_therm <- 100.06696068911 #conversion from kBtu(th) to therm
 
-CZ1_SF_NG <- CZ1_145 %>%
-  mutate(Dhw_CZ1_therm = Dhw_CZ1_NG / to_therm)
+CZ12_SF_NG <- CZ12_145 %>%
+  mutate(Dhw_CZ1_therm = Dhw_CZ12_NG / to_therm)
 
-CZ1_145_SF_summary_NG <- CZ1_SF_NG %>%
+CZ12_145_SF_summary_NG <- CZ12_SF_NG %>%
   group_by(Mon,Hr) %>%
-  summarise(avg_Dhw_CZ1_NG_therm = mean(Dhw_CZ1_therm))
+  summarise(avg_Dhw_CZ12_NG_therm = mean(Dhw_CZ12_therm))
 
-CZ1_SF_NG_mltd <- CZ1_145_SF_summary_NG %>% gather(key = "cz", value = "therm", c(-Mon,-Hr))
-ggplot(CZ1_SF_NG_mltd, aes(x = Hr, y = therm)) + geom_line(aes(color = cz)) + theme_gray(base_size = 13) + facet_wrap("Mon") + labs(x ="Hour of Day", y= "Energy (Therms)")+
+CZ12_SF_NG_mltd <- CZ12_145_SF_summary_NG %>% gather(key = "cz", value = "therm", c(-Mon,-Hr))
+ggplot(CZ12_SF_NG_mltd, aes(x = Hr, y = therm)) + geom_line(aes(color = cz)) + theme_gray(base_size = 13) + facet_wrap("Mon") + labs(x ="Hour of Day", y= "Energy (Therms)")+
    # ggtitle("Natural Gas Water Heater - Single Family") +
     theme(plot.title = element_text(hjust = 0.5))  +
     theme_pack +
@@ -142,20 +142,20 @@ ggplot(CZ1_SF_NG_mltd, aes(x = Hr, y = therm)) + geom_line(aes(color = cz)) + th
   scale_x_continuous(breaks = c(4,8,12,16,20,24)) +
   scale_color_manual(name="Case Type", 
                         labels = c("Natural Gas"), 
-                        values = c("avg_Dhw_CZ1_NG_therm" = "black"))
+                        values = c("avg_Dhw_CZ12_NG_therm" = "black"))
 ```
 
 #cz1 HPWH sanden
 ```{r}
-CZ1_145_SF_HPWH <- CZ1_145 %>%
+CZ12_145_SF_HPWH <- CZ12_145 %>%
   group_by(Mon,Hr) %>%
-  summarise(avg_Dhw_CZ1_HPWH_SF_bc_kWh = mean(Dhw_CZ1_HPWH_SF_bc_kWh),
-            avg_Dhw_CZ1_HPWH_SF_3_to_6_kWh = mean(Dhw_CZ1_HPWH_SF_3_to_6_kWh),
-            avg_Dhw_CZ1_HPWH_SF_10_to_1_kWh = mean(Dhw_CZ1_HPWH_SF_10_to_1_kWh))
+  summarise(avg_Dhw_CZ1_HPWH_SF_bc_kWh = mean(Dhw_CZ12_HPWH_SF_bc_kWh),
+            avg_Dhw_CZ1_HPWH_SF_3_to_6_kWh = mean(Dhw_CZ12_HPWH_SF_3_to_6_kWh),
+            avg_Dhw_CZ1_HPWH_SF_10_to_1_kWh = mean(Dhw_CZ12_HPWH_SF_10_to_1_kWh))
 
 
-CZ1_145_SF_HPWH_melted <- CZ1_145_SF_HPWH %>% gather(key = "cz", value = "kwh", c(-Mon,-Hr))
-ggplot(CZ1_145_SF_HPWH_melted, aes(x = Hr, y = kwh)) + geom_line(aes(color = cz)) + theme_gray(base_size = 13) + facet_wrap("Mon") + labs(x ="Hour of Day", y= "Energy (kWh)") + scale_x_continuous(breaks = c(4,8,12,16,20,24)) + 
+CZ12_145_SF_HPWH_melted <- CZ12_145_SF_HPWH %>% gather(key = "cz", value = "kwh", c(-Mon,-Hr))
+ggplot(CZ12_145_SF_HPWH_melted, aes(x = Hr, y = kwh)) + geom_line(aes(color = cz)) + theme_gray(base_size = 13) + facet_wrap("Mon") + labs(x ="Hour of Day", y= "Energy (kWh)") + scale_x_continuous(breaks = c(4,8,12,16,20,24)) + 
     #ggtitle("Heat Pump Water Heater Sanden CO2 - Single Family") +
     theme(plot.title = element_text(hjust = 0.5)) +
     theme_pack +
@@ -163,32 +163,32 @@ ggplot(CZ1_145_SF_HPWH_melted, aes(x = Hr, y = kwh)) + geom_line(aes(color = cz)
                         labels = c("10 to 1", 
                                    "3 to 6", 
                                    "base case"), 
-                        values = c("avg_Dhw_CZ1_HPWH_SF_10_to_1_kWh" = "red",
-                                    "avg_Dhw_CZ1_HPWH_SF_3_to_6_kWh" = "blue", 
-                                    "avg_Dhw_CZ1_HPWH_SF_bc_kWh" = "black"))
+                        values = c("avg_Dhw_CZ12_HPWH_SF_10_to_1_kWh" = "red",
+                                    "avg_Dhw_CZ12_HPWH_SF_3_to_6_kWh" = "blue", 
+                                    "avg_Dhw_CZ12_HPWH_SF_bc_kWh" = "black"))
 ```
 
 ```{r}
-CZ1_145_SF_temp <- CZ1_145 %>%
+CZ12_145_SF_temp <- CZ12_145 %>%
   group_by(Mon,Hr) %>%
   summarise(avg_CZ1_temp = mean(`Dry Bulb`))
 
 
-CZ1_145_SF_temp_melted <- CZ1_145_SF_temp %>% gather(key = "cz", value = "temp", c(-Mon,-Hr))
-ggplot(CZ1_145_SF_temp_melted, aes(x = Hr, y = temp)) + geom_line(aes(color = cz)) + theme_gray(base_size = 13) + facet_wrap("Mon") + labs(x ="Hour of Day", y= "Temperature (F)") + scale_x_continuous(breaks = c(4,8,12,16,20,24)) + 
+CZ12_145_SF_temp_melted <- CZ12_145_SF_temp %>% gather(key = "cz", value = "temp", c(-Mon,-Hr))
+ggplot(CZ12_145_SF_temp_melted, aes(x = Hr, y = temp)) + geom_line(aes(color = cz)) + theme_gray(base_size = 13) + facet_wrap("Mon") + labs(x ="Hour of Day", y= "Temperature (F)") + scale_x_continuous(breaks = c(4,8,12,16,20,24)) + 
     ggtitle("Outside Temperature") +
     theme(plot.title = element_text(hjust = 0.5)) +
     theme_pack +
   scale_color_manual(name="Temp", 
                         labels = c("Dry Bulb"), 
-                        values = c("avg_CZ1_temp" = "red"))
+                        values = c("avg_CZ12_temp" = "red"))
 ```
 
 
 ```{r}
 ggplot()+
-  geom_line(data = CZ1_145_SF_HPWH_melted, aes(x = Hr, y = kwh)) + facet_wrap("Mon") +
-  geom_line(data = CZ1_145_SF_temp_melted, aes(x= Hr, y= temp)) + facet_wrap("Mon") + scale_y_continuous(sec.axis = sec_axis(~.*1, name = "Temp [F]"))
+  geom_line(data = CZ12_145_SF_HPWH_melted, aes(x = Hr, y = kwh)) + facet_wrap("Mon") +
+  geom_line(data = CZ12_145_SF_temp_melted, aes(x= Hr, y= temp)) + facet_wrap("Mon") + scale_y_continuous(sec.axis = sec_axis(~.*1, name = "Temp [F]"))
 ```
 
 
@@ -210,94 +210,94 @@ off.peak.hr <- c(1:15,22:24)
 
 rate_therm <- 0.30
 
-CZ1_145 <-
-  CZ1_145 %>%
+CZ12_145 <-
+  CZ12_145 %>%
   mutate(time = as.hms(Hr))
 
-CZ1_145 <- CZ1_145 %>%
-  mutate(Dhw_CZ1_therm = Dhw_CZ1_NG / to_therm)
+CZ12_145 <- CZ12_145 %>%
+  mutate(Dhw_CZ12_therm = Dhw_CZ12_NG / to_therm)
 
 # build in rate structure
-CZ1_145 <-
-  CZ1_145 %>%
+CZ12_145 <-
+  CZ12_145 %>%
   mutate(rate = case_when(second(as.hms(Hr)) %in% peak.hr & Mon %in% winter ~ peak_winter,                                                                 second(as.hms(Hr)) %in% peak.hr & Mon %in% summer ~ peak_summer,
                           second(as.hms(Hr)) %in% off.peak.hr & Mon %in% winter ~ off.peak_winter,
                           second(as.hms(Hr)) %in% off.peak.hr & Mon %in% summer ~ off.peak_summer))
 
-CZ1_145 <-
-  CZ1_145 %>%
-  mutate(Dhw_CZ1_ERWH_SF_bc_cost = Dhw_CZ1_ERWH_SF_bc_kWh * rate, 
-         Dhw_CZ1_HPWH_SF_bc_cost = Dhw_CZ1_HPWH_SF_bc_kWh * rate, 
-         Dhw_CZ1_HPWH_bu_SF_bc_cost = Dhw_CZ1_HPWH_bu_SF_bc_kWh * rate,
-         Dhw_CZ1_HPWH_bu2_SF_bc_cost = Dhw_CZ1_HPWH_bu2_SF_bc_kWh * rate, 
-         Dhw_CZ1_HPWH_backup_SF_bc_cost = Dhw_CZ1_HPWH_bu_SF_bc_cost + Dhw_CZ1_HPWH_bu2_SF_bc_cost,
+CZ12_145 <-
+  CZ12_145 %>%
+  mutate(Dhw_CZ12_ERWH_SF_bc_cost = Dhw_CZ12_ERWH_SF_bc_kWh * rate, 
+         Dhw_CZ12_HPWH_SF_bc_cost = Dhw_CZ12_HPWH_SF_bc_kWh * rate, 
+         Dhw_CZ12_HPWH_bu_SF_bc_cost = Dhw_CZ12_HPWH_bu_SF_bc_kWh * rate,
+         Dhw_CZ12_HPWH_bu2_SF_bc_cost = Dhw_CZ12_HPWH_bu2_SF_bc_kWh * rate, 
+         Dhw_CZ12_HPWH_backup_SF_bc_cost = Dhw_CZ12_HPWH_bu_SF_bc_cost + Dhw_CZ12_HPWH_bu2_SF_bc_cost,
          
-         Dhw_CZ1_ERWH_SF_3_to_6_cost = Dhw_CZ1_ERWH_SF_3_to_6_kWh * rate, 
-         Dhw_CZ1_HPWH_SF_3_to_6_cost = Dhw_CZ1_HPWH_SF_3_to_6_kWh * rate, 
-         Dhw_CZ1_HPWH_bu_SF_3_to_6_cost = Dhw_CZ1_HPWH_bu_SF_3_to_6_kWh * rate,
-         Dhw_CZ1_HPWH_bu2_SF_3_to_6_cost = Dhw_CZ1_HPWH_bu2_SF_3_to_6_kWh * rate,
-         Dhw_CZ1_HPWH_backup_SF_3_to_6_cost = Dhw_CZ1_HPWH_bu_SF_3_to_6_cost +Dhw_CZ1_HPWH_bu2_SF_3_to_6_cost,
+         Dhw_CZ12_ERWH_SF_3_to_6_cost = Dhw_CZ12_ERWH_SF_3_to_6_kWh * rate, 
+         Dhw_CZ12_HPWH_SF_3_to_6_cost = Dhw_CZ12_HPWH_SF_3_to_6_kWh * rate, 
+         Dhw_CZ12_HPWH_bu_SF_3_to_6_cost = Dhw_CZ12_HPWH_bu_SF_3_to_6_kWh * rate,
+         Dhw_CZ12_HPWH_bu2_SF_3_to_6_cost = Dhw_CZ12_HPWH_bu2_SF_3_to_6_kWh * rate,
+         Dhw_CZ12_HPWH_backup_SF_3_to_6_cost = Dhw_CZ12_HPWH_bu_SF_3_to_6_cost +Dhw_CZ12_HPWH_bu2_SF_3_to_6_cost,
          
-         Dhw_CZ1_ERWH_SF_10_to_1_cost = Dhw_CZ1_ERWH_SF_10_to_1_kWh * rate,
-         Dhw_CZ1_HPWH_SF_10_to_1_cost = Dhw_CZ1_HPWH_SF_10_to_1_kWh * rate,
-         Dhw_CZ1_HPWH_bu_SF_10_to_1_cost = Dhw_CZ1_HPWH_bu_SF_10_to_1_kWh * rate,
-         Dhw_CZ1_HPWH_bu2_SF_10_to_1_cost = Dhw_CZ1_HPWH_bu2_SF_10_to_1_kWh * rate,
-         Dhw_CZ1_HPWH_backup_SF_10_to_1_cost = Dhw_CZ1_HPWH_bu_SF_10_to_1_cost + Dhw_CZ1_HPWH_bu2_SF_10_to_1_cost,
+         Dhw_CZ12_ERWH_SF_10_to_1_cost = Dhw_CZ12_ERWH_SF_10_to_1_kWh * rate,
+         Dhw_CZ12_HPWH_SF_10_to_1_cost = Dhw_CZ12_HPWH_SF_10_to_1_kWh * rate,
+         Dhw_CZ12_HPWH_bu_SF_10_to_1_cost = Dhw_CZ12_HPWH_bu_SF_10_to_1_kWh * rate,
+         Dhw_CZ12_HPWH_bu2_SF_10_to_1_cost = Dhw_CZ12_HPWH_bu2_SF_10_to_1_kWh * rate,
+         Dhw_CZ12_HPWH_backup_SF_10_to_1_cost = Dhw_CZ12_HPWH_bu_SF_10_to_1_cost + Dhw_CZ12_HPWH_bu2_SF_10_to_1_cost,
          
-         Dhw_CZ1_therm_cost = Dhw_CZ1_therm * rate_therm)
+         Dhw_CZ12_therm_cost = Dhw_CZ12_therm * rate_therm)
 ```
 
 #plot cost
 ```{r}
-CZ1_145_cost_summary <- CZ1_145 %>%
+CZ12_145_cost_summary <- CZ12_145 %>%
   group_by(Mon) %>%
-  summarise(total_Dhw_CZ1_ERWH_SF_bc_cost = sum(Dhw_CZ1_ERWH_SF_bc_cost), 
-            total_Dhw_CZ1_HPWH_SF_bc_cost = sum(Dhw_CZ1_HPWH_SF_bc_cost), 
-            total_Dhw_CZ1_HPWH_backup_SF_bc_cost = sum(Dhw_CZ1_HPWH_backup_SF_bc_cost),
+  summarise(total_Dhw_CZ12_ERWH_SF_bc_cost = sum(Dhw_CZ12_ERWH_SF_bc_cost), 
+            total_Dhw_CZ12_HPWH_SF_bc_cost = sum(Dhw_CZ12_HPWH_SF_bc_cost), 
+            total_Dhw_CZ12_HPWH_backup_SF_bc_cost = sum(Dhw_CZ12_HPWH_backup_SF_bc_cost),
             
-            total_Dhw_CZ1_ERWH_SF_3_to_6_cost = sum(Dhw_CZ1_ERWH_SF_3_to_6_cost), 
-            total_Dhw_CZ1_HPWH_SF_3_to_6_cost = sum(Dhw_CZ1_HPWH_SF_3_to_6_cost), 
-            total_Dhw_CZ1_HPWH_backup_SF_3_to_6_cost = sum(Dhw_CZ1_HPWH_backup_SF_3_to_6_cost),
+            total_Dhw_CZ12_ERWH_SF_3_to_6_cost = sum(Dhw_CZ12_ERWH_SF_3_to_6_cost), 
+            total_Dhw_CZ12_HPWH_SF_3_to_6_cost = sum(Dhw_CZ12_HPWH_SF_3_to_6_cost), 
+            total_Dhw_CZ12_HPWH_backup_SF_3_to_6_cost = sum(Dhw_CZ12_HPWH_backup_SF_3_to_6_cost),
             
-            total_Dhw_CZ1_ERWH_SF_10_to_1_cost = sum(Dhw_CZ1_ERWH_SF_10_to_1_cost),
-            total_Dhw_CZ1_HPWH_SF_10_to_1_cost = sum(Dhw_CZ1_HPWH_SF_10_to_1_cost),
-            total_Dhw_CZ1_HPWH_backup_SF_10_to_1_cost = sum(Dhw_CZ1_HPWH_backup_SF_10_to_1_cost),
+            total_Dhw_CZ12_ERWH_SF_10_to_1_cost = sum(Dhw_CZ12_ERWH_SF_10_to_1_cost),
+            total_Dhw_CZ12_HPWH_SF_10_to_1_cost = sum(Dhw_CZ12_HPWH_SF_10_to_1_cost),
+            total_Dhw_CZ12_HPWH_backup_SF_10_to_1_cost = sum(Dhw_CZ12_HPWH_backup_SF_10_to_1_cost),
             
-            total_Dhw_CZ1_therm_cost = sum(Dhw_CZ1_therm_cost))
+            total_Dhw_CZ12_therm_cost = sum(Dhw_CZ12_therm_cost))
 
 
-CZ1_145_cost_summary <- subset(CZ1_145_cost_summary, select = -Mon)
-annualCost <- data.frame(wh_type = names(CZ1_145_cost_summary), annual_cost = colSums(CZ1_145_cost_summary))
+CZ12_145_cost_summary <- subset(CZ12_145_cost_summary, select = -Mon)
+annualCost <- data.frame(wh_type = names(CZ12_145_cost_summary), annual_cost = colSums(CZ12_145_cost_summary))
 
 annualCost <- 
   annualCost %>% 
-    mutate(type = case_when(wh_type == "total_Dhw_CZ1_ERWH_SF_bc_cost" ~ "ERWH",
-                                 wh_type == "total_Dhw_CZ1_HPWH_SF_bc_cost" ~ "HPWH",
-                                 wh_type == "total_Dhw_CZ1_HPWH_backup_SF_bc_cost" ~ "HPWH_bu",
+    mutate(type = case_when(wh_type == "total_Dhw_CZ12_ERWH_SF_bc_cost" ~ "ERWH",
+                                 wh_type == "total_Dhw_CZ12_HPWH_SF_bc_cost" ~ "HPWH",
+                                 wh_type == "total_Dhw_CZ12_HPWH_backup_SF_bc_cost" ~ "HPWH_bu",
                             
-                                 wh_type == "total_Dhw_CZ1_ERWH_SF_3_to_6_cost" ~ "ERWH",
-                                 wh_type == "total_Dhw_CZ1_HPWH_SF_3_to_6_cost" ~ "HPWH",
-                                 wh_type == "total_Dhw_CZ1_HPWH_backup_SF_3_to_6_cost" ~ "HPWH_bu",
+                                 wh_type == "total_Dhw_CZ12_ERWH_SF_3_to_6_cost" ~ "ERWH",
+                                 wh_type == "total_Dhw_CZ12_HPWH_SF_3_to_6_cost" ~ "HPWH",
+                                 wh_type == "total_Dhw_CZ12_HPWH_backup_SF_3_to_6_cost" ~ "HPWH_bu",
                             
-                           wh_type == "total_Dhw_CZ1_ERWH_SF_10_to_1_cost" ~ "ERWH",
-                           wh_type == "total_Dhw_CZ1_HPWH_SF_10_to_1_cost" ~ "HPWH",
-                           wh_type == "total_Dhw_CZ1_HPWH_backup_SF_10_to_1_cost" ~ "HPWH_bu",
-                           wh_type == "total_Dhw_CZ1_therm_cost" ~ "NGWH"))
+                           wh_type == "total_Dhw_CZ12_ERWH_SF_10_to_1_cost" ~ "ERWH",
+                           wh_type == "total_Dhw_CZ12_HPWH_SF_10_to_1_cost" ~ "HPWH",
+                           wh_type == "total_Dhw_CZ12_HPWH_backup_SF_10_to_1_cost" ~ "HPWH_bu",
+                           wh_type == "total_Dhw_CZ12_therm_cost" ~ "NGWH"))
 
 #annualCost <- colSums(CZ1_145_cost_summary[,c(2:11)]) %>%
 #as.data.frame(wH_type = names(CZ1_145_cost_summary))
 
 ggplot(annualCost, aes(x = wh_type , y = annual_cost)) + geom_col(aes(fill = type)) + theme_gray(base_size = 13) + labs(x = "Case Scenario", y = "Cost ($)") + 
-  scale_x_discrete(labels=c("total_Dhw_CZ1_ERWH_SF_bc_cost" = "base", 
-                            "total_Dhw_CZ1_HPWH_SF_bc_cost" = "base",
-                            "total_Dhw_CZ1_HPWH_backup_SF_bc_cost" = "base",
-                            "total_Dhw_CZ1_ERWH_SF_3_to_6_cost" = "3 to 6",
-                            "total_Dhw_CZ1_HPWH_SF_3_to_6_cost" = "3 to 6",
-                            "total_Dhw_CZ1_HPWH_backup_SF_3_to_6_cost" = "3 to 6",
-                            "total_Dhw_CZ1_ERWH_SF_10_to_1_cost" = "10 to 1",
-                            "total_Dhw_CZ1_HPWH_SF_10_to_1_cost" = "10 to 1",
-                            "total_Dhw_CZ1_HPWH_backup_SF_10_to_1_cost" = "10 to 1",
-                            "total_Dhw_CZ1_therm_cost" = "base")) +
+  scale_x_discrete(labels=c("total_Dhw_CZ12_ERWH_SF_bc_cost" = "base", 
+                            "total_Dhw_CZ12_HPWH_SF_bc_cost" = "base",
+                            "total_Dhw_CZ12_HPWH_backup_SF_bc_cost" = "base",
+                            "total_Dhw_CZ12_ERWH_SF_3_to_6_cost" = "3 to 6",
+                            "total_Dhw_CZ12_HPWH_SF_3_to_6_cost" = "3 to 6",
+                            "total_Dhw_CZ12_HPWH_backup_SF_3_to_6_cost" = "3 to 6",
+                            "total_Dhw_CZ12_ERWH_SF_10_to_1_cost" = "10 to 1",
+                            "total_Dhw_CZ12_HPWH_SF_10_to_1_cost" = "10 to 1",
+                            "total_Dhw_CZ12_HPWH_backup_SF_10_to_1_cost" = "10 to 1",
+                            "total_Dhw_CZ12_therm_cost" = "base")) +
    theme(axis.text.x = element_text(size=12, angle=45))
 
 ```
@@ -306,73 +306,73 @@ ggplot(annualCost, aes(x = wh_type , y = annual_cost)) + geom_col(aes(fill = typ
 co2_per_kWh <- 0.524 #lbs CO2 per kWh
 co2_per_therm <- 13.446 #lbs CO2 per therm
 
-CZ1_145 <-
-  CZ1_145 %>%
-  mutate(Dhw_CZ1_ERWH_SF_bc_GHG = Dhw_CZ1_ERWH_SF_bc_kWh * co2_per_kWh, 
-         Dhw_CZ1_HPWH_SF_bc_GHG = Dhw_CZ1_HPWH_SF_bc_kWh * co2_per_kWh, 
-         Dhw_CZ1_HPWH_bu_SF_bc_GHG = Dhw_CZ1_HPWH_bu_SF_bc_kWh * co2_per_kWh,
-         Dhw_CZ1_HPWH_bu2_SF_bc_GHG = Dhw_CZ1_HPWH_bu2_SF_bc_kWh * co2_per_kWh, 
-         Dhw_CZ1_HPWH_backup_SF_bc_GHG = Dhw_CZ1_HPWH_bu_SF_bc_GHG + Dhw_CZ1_HPWH_bu2_SF_bc_GHG,
+CZ12_145 <-
+  CZ12_145 %>%
+  mutate(Dhw_CZ12_ERWH_SF_bc_GHG = Dhw_CZ12_ERWH_SF_bc_kWh * co2_per_kWh, 
+         Dhw_CZ12_HPWH_SF_bc_GHG = Dhw_CZ12_HPWH_SF_bc_kWh * co2_per_kWh, 
+         Dhw_CZ12_HPWH_bu_SF_bc_GHG = Dhw_CZ12_HPWH_bu_SF_bc_kWh * co2_per_kWh,
+         Dhw_CZ12_HPWH_bu2_SF_bc_GHG = Dhw_CZ12_HPWH_bu2_SF_bc_kWh * co2_per_kWh, 
+         Dhw_CZ12_HPWH_backup_SF_bc_GHG = Dhw_CZ12_HPWH_bu_SF_bc_GHG + Dhw_CZ12_HPWH_bu2_SF_bc_GHG,
          
-         Dhw_CZ1_ERWH_SF_3_to_6_GHG = Dhw_CZ1_ERWH_SF_3_to_6_kWh * co2_per_kWh, 
-         Dhw_CZ1_HPWH_SF_3_to_6_GHG = Dhw_CZ1_HPWH_SF_3_to_6_kWh * co2_per_kWh, 
-         Dhw_CZ1_HPWH_bu_SF_3_to_6_GHG = Dhw_CZ1_HPWH_bu_SF_3_to_6_kWh * co2_per_kWh,
-         Dhw_CZ1_HPWH_bu2_SF_3_to_6_GHG = Dhw_CZ1_HPWH_bu2_SF_3_to_6_kWh * co2_per_kWh,
-         Dhw_CZ1_HPWH_backup_SF_3_to_6_GHG = Dhw_CZ1_HPWH_bu_SF_3_to_6_GHG +Dhw_CZ1_HPWH_bu2_SF_3_to_6_GHG,
+         Dhw_CZ12_ERWH_SF_3_to_6_GHG = Dhw_CZ12_ERWH_SF_3_to_6_kWh * co2_per_kWh, 
+         Dhw_CZ12_HPWH_SF_3_to_6_GHG = Dhw_CZ12_HPWH_SF_3_to_6_kWh * co2_per_kWh, 
+         Dhw_CZ12_HPWH_bu_SF_3_to_6_GHG = Dhw_CZ12_HPWH_bu_SF_3_to_6_kWh * co2_per_kWh,
+         Dhw_CZ12_HPWH_bu2_SF_3_to_6_GHG = Dhw_CZ12_HPWH_bu2_SF_3_to_6_kWh * co2_per_kWh,
+         Dhw_CZ12_HPWH_backup_SF_3_to_6_GHG = Dhw_CZ12_HPWH_bu_SF_3_to_6_GHG +Dhw_CZ12_HPWH_bu2_SF_3_to_6_GHG,
          
-         Dhw_CZ1_ERWH_SF_10_to_1_GHG = Dhw_CZ1_ERWH_SF_10_to_1_kWh * co2_per_kWh,
-         Dhw_CZ1_HPWH_SF_10_to_1_GHG = Dhw_CZ1_HPWH_SF_10_to_1_kWh * co2_per_kWh,
-         Dhw_CZ1_HPWH_bu_SF_10_to_1_GHG = Dhw_CZ1_HPWH_bu_SF_10_to_1_kWh * co2_per_kWh,
-         Dhw_CZ1_HPWH_bu2_SF_10_to_1_GHG = Dhw_CZ1_HPWH_bu2_SF_10_to_1_kWh * co2_per_kWh,
-         Dhw_CZ1_HPWH_backup_SF_10_to_1_GHG = Dhw_CZ1_HPWH_bu_SF_10_to_1_GHG + Dhw_CZ1_HPWH_bu2_SF_10_to_1_GHG,
+         Dhw_CZ12_ERWH_SF_10_to_1_GHG = Dhw_CZ12_ERWH_SF_10_to_1_kWh * co2_per_kWh,
+         Dhw_CZ12_HPWH_SF_10_to_1_GHG = Dhw_CZ12_HPWH_SF_10_to_1_kWh * co2_per_kWh,
+         Dhw_CZ12_HPWH_bu_SF_10_to_1_GHG = Dhw_CZ12_HPWH_bu_SF_10_to_1_kWh * co2_per_kWh,
+         Dhw_CZ12_HPWH_bu2_SF_10_to_1_GHG = Dhw_CZ12_HPWH_bu2_SF_10_to_1_kWh * co2_per_kWh,
+         Dhw_CZ12_HPWH_backup_SF_10_to_1_GHG = Dhw_CZ12_HPWH_bu_SF_10_to_1_GHG + Dhw_CZ12_HPWH_bu2_SF_10_to_1_GHG,
          
-         Dhw_CZ1_therm_GHG = Dhw_CZ1_therm * co2_per_therm)
+         Dhw_CZ12_therm_GHG = Dhw_CZ12_therm * co2_per_therm)
 
 
-CZ1_145_GHG_summary <- CZ1_145 %>%
+CZ12_145_GHG_summary <- CZ12_145 %>%
   group_by(Mon) %>%
-  summarise(total_Dhw_CZ1_ERWH_SF_bc_GHG = sum(Dhw_CZ1_ERWH_SF_bc_GHG), 
-            total_Dhw_CZ1_HPWH_SF_bc_GHG = sum(Dhw_CZ1_HPWH_SF_bc_GHG), 
-            total_Dhw_CZ1_HPWH_backup_SF_bc_GHG = sum(Dhw_CZ1_HPWH_backup_SF_bc_GHG),
+  summarise(total_Dhw_CZ12_ERWH_SF_bc_GHG = sum(Dhw_CZ12_ERWH_SF_bc_GHG), 
+            total_Dhw_CZ12_HPWH_SF_bc_GHG = sum(Dhw_CZ12_HPWH_SF_bc_GHG), 
+            total_Dhw_CZ12_HPWH_backup_SF_bc_GHG = sum(Dhw_CZ12_HPWH_backup_SF_bc_GHG),
             
-            total_Dhw_CZ1_ERWH_SF_3_to_6_GHG = sum(Dhw_CZ1_ERWH_SF_3_to_6_GHG), 
-            total_Dhw_CZ1_HPWH_SF_3_to_6_GHG = sum(Dhw_CZ1_HPWH_SF_3_to_6_cost), 
-            total_Dhw_CZ1_HPWH_backup_SF_3_to_6_GHG = sum(Dhw_CZ1_HPWH_backup_SF_3_to_6_GHG),
+            total_Dhw_CZ12_ERWH_SF_3_to_6_GHG = sum(Dhw_CZ12_ERWH_SF_3_to_6_GHG), 
+            total_Dhw_CZ12_HPWH_SF_3_to_6_GHG = sum(Dhw_CZ12_HPWH_SF_3_to_6_cost), 
+            total_Dhw_CZ12_HPWH_backup_SF_3_to_6_GHG = sum(Dhw_CZ12_HPWH_backup_SF_3_to_6_GHG),
             
-            total_Dhw_CZ1_ERWH_SF_10_to_1_GHG = sum(Dhw_CZ1_ERWH_SF_10_to_1_GHG),
-            total_Dhw_CZ1_HPWH_SF_10_to_1_GHG = sum(Dhw_CZ1_HPWH_SF_10_to_1_cost),
-            total_Dhw_CZ1_HPWH_backup_SF_10_to_1_GHG = sum(Dhw_CZ1_HPWH_backup_SF_10_to_1_GHG),
+            total_Dhw_CZ12_ERWH_SF_10_to_1_GHG = sum(Dhw_CZ12_ERWH_SF_10_to_1_GHG),
+            total_Dhw_CZ12_HPWH_SF_10_to_1_GHG = sum(Dhw_CZ12_HPWH_SF_10_to_1_cost),
+            total_Dhw_CZ12_HPWH_backup_SF_10_to_1_GHG = sum(Dhw_CZ12_HPWH_backup_SF_10_to_1_GHG),
             
-            total_Dhw_CZ1_therm_GHG = sum(Dhw_CZ1_therm_GHG))
+            total_Dhw_CZ12_therm_GHG = sum(Dhw_CZ12_therm_GHG))
 
 
-CZ1_145_GHG_summary <- subset(CZ1_145_GHG_summary, select = -Mon)
-annualGHG <- data.frame(wh_type = names(CZ1_145_GHG_summary), annual_GHG = colSums(CZ1_145_GHG_summary))
+CZ12_145_GHG_summary <- subset(CZ12_145_GHG_summary, select = -Mon)
+annualGHG <- data.frame(wh_type = names(CZ12_145_GHG_summary), annual_GHG = colSums(CZ12_145_GHG_summary))
 
 annualGHG <- 
   annualGHG %>% 
-    mutate(type = case_when(wh_type == "total_Dhw_CZ1_ERWH_SF_bc_GHG" ~ "ERWH",
-                                 wh_type == "total_Dhw_CZ1_HPWH_SF_bc_GHG" ~ "HPWH",
-                                 wh_type == "total_Dhw_CZ1_HPWH_backup_SF_bc_GHG" ~ "HPWH_bu",
-                                 wh_type == "total_Dhw_CZ1_ERWH_SF_3_to_6_GHG" ~ "ERWH",
-                                 wh_type == "total_Dhw_CZ1_HPWH_SF_3_to_6_GHG" ~ "HPWH",
-                                 wh_type == "total_Dhw_CZ1_HPWH_backup_SF_3_to_6_GHG" ~ "HPWH_bu",
-                           wh_type == "total_Dhw_CZ1_ERWH_SF_10_to_1_GHG" ~ "ERWH",
-                           wh_type == "total_Dhw_CZ1_HPWH_SF_10_to_1_GHG" ~ "HPWH",
-                           wh_type == "total_Dhw_CZ1_HPWH_backup_SF_10_to_1_GHG" ~ "HPWH_bu",
-                           wh_type == "total_Dhw_CZ1_therm_GHG" ~ "NGWH"))
+    mutate(type = case_when(wh_type == "total_Dhw_CZ12_ERWH_SF_bc_GHG" ~ "ERWH",
+                                 wh_type == "total_Dhw_CZ12_HPWH_SF_bc_GHG" ~ "HPWH",
+                                 wh_type == "total_Dhw_CZ12_HPWH_backup_SF_bc_GHG" ~ "HPWH_bu",
+                                 wh_type == "total_Dhw_CZ12_ERWH_SF_3_to_6_GHG" ~ "ERWH",
+                                 wh_type == "total_Dhw_CZ12_HPWH_SF_3_to_6_GHG" ~ "HPWH",
+                                 wh_type == "total_Dhw_CZ12_HPWH_backup_SF_3_to_6_GHG" ~ "HPWH_bu",
+                           wh_type == "total_Dhw_CZ12_ERWH_SF_10_to_1_GHG" ~ "ERWH",
+                           wh_type == "total_Dhw_CZ12_HPWH_SF_10_to_1_GHG" ~ "HPWH",
+                           wh_type == "total_Dhw_CZ12_HPWH_backup_SF_10_to_1_GHG" ~ "HPWH_bu",
+                           wh_type == "total_Dhw_CZ12_therm_GHG" ~ "NGWH"))
 
 ggplot(annualGHG, aes(x = wh_type , y = annual_GHG)) + geom_col(aes(fill = type)) + theme_gray(base_size = 13) + labs(x = "Case Scenario", y= "GHG Emissions (lbs CO2)") + 
-  scale_x_discrete(labels=c("total_Dhw_CZ1_ERWH_SF_bc_GHG" = "base", 
-                            "total_Dhw_CZ1_HPWH_SF_bc_GHG" = "base",
-                            "total_Dhw_CZ1_HPWH_backup_SF_bc_GHG" = "base",
-                            "total_Dhw_CZ1_ERWH_SF_3_to_6_GHG" = "3 to 6",
-                            "total_Dhw_CZ1_HPWH_SF_3_to_6_GHG" = "3 to 6",
-                            "total_Dhw_CZ1_HPWH_backup_SF_3_to_6_GHG" = "3 to 6",
-                            "total_Dhw_CZ1_ERWH_SF_10_to_1_GHG" = "10 to 1",
-                            "total_Dhw_CZ1_HPWH_SF_10_to_1_GHG" = "10 to 1",
-                            "total_Dhw_CZ1_HPWH_backup_SF_10_to_1_GHG" = "10 to 1",
-                            "total_Dhw_CZ1_therm_GHG" = "base")) +
+  scale_x_discrete(labels=c("total_Dhw_CZ12_ERWH_SF_bc_GHG" = "base", 
+                            "total_Dhw_CZ12_HPWH_SF_bc_GHG" = "base",
+                            "total_Dhw_CZ12_HPWH_backup_SF_bc_GHG" = "base",
+                            "total_Dhw_CZ12_ERWH_SF_3_to_6_GHG" = "3 to 6",
+                            "total_Dhw_CZ12_HPWH_SF_3_to_6_GHG" = "3 to 6",
+                            "total_Dhw_CZ12_HPWH_backup_SF_3_to_6_GHG" = "3 to 6",
+                            "total_Dhw_CZ12_ERWH_SF_10_to_1_GHG" = "10 to 1",
+                            "total_Dhw_CZ12_HPWH_SF_10_to_1_GHG" = "10 to 1",
+                            "total_Dhw_CZ12_HPWH_backup_SF_10_to_1_GHG" = "10 to 1",
+                            "total_Dhw_CZ12_therm_GHG" = "base")) +
    theme(axis.text.x = element_text(size=12, angle=45))
 
 ```
