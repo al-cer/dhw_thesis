@@ -4,11 +4,9 @@ output: html_notebook
 ---
 
 
-
-
 ```{r}
-require (data.table)
 require (lubridate)
+require (data.table)
 require (ggplot2)
 library(readr)        # Package to read data, .csv files
 library(tidyverse)
@@ -18,12 +16,13 @@ library(dplyr)
 
 
 ```{r}
+
 GHG_marginal_emissions <- fread("2017_RT5M_Marginal_Emissions_Rates_Dataframe.csv")
 
 # add meta data
 GHG_marginal_emissions[ , year := year(Date_Time_Pacific)]
 GHG_marginal_emissions[ , month := month(Date_Time_Pacific)]
-GHG_marginal_emissions[ , wday := wday(Date_Time_Pacific, label = TRUE)]
+GHG_marginal_emissions[ , wday := lubridate::wday(Date_Time_Pacific, label = TRUE)]
 GHG_marginal_emissions[ , dhour := hour(Date_Time_Pacific)]
 GHG_marginal_emissions[ , daytype := "weekday"]
 GHG_marginal_emissions[ wday == "Sat" | wday == "Sun", daytype := "weekend"]
@@ -44,6 +43,7 @@ ggplot(GHG_me_SP, aes(x = dhour, y = avg_rate)) + geom_line(aes(linetype = dayty
 GHG_NP_hour <- GHG_marginal_emissions %>% 
   mutate(Hr = dhour + 1) %>% 
    group_by(month, dayOfyear, Hr) %>%
-   summarise(GHG_hourly = mean(RT5M_NP15_Emissions_Rate)) 
+   summarise(GHG_hourly_north = mean(RT5M_NP15_Emissions_Rate),
+             GHG_hourly_south = mean(RT5M_SP15_Emissions_Rate)) 
 ```
 
