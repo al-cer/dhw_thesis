@@ -1751,103 +1751,27 @@ summary {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVxdWlyZSAoZGF0YS50YWJsZSlcbmBgYCJ9 -->
-<pre class="r"><code>require (data.table)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBkYXRhLnRhYmxlXG5SZWdpc3RlcmVkIFMzIG1ldGhvZCBvdmVyd3JpdHRlbiBieSAnZGF0YS50YWJsZSc6XG4gIG1ldGhvZCAgICAgICAgICAgZnJvbVxuICBwcmludC5kYXRhLnRhYmxlICAgICBcbmRhdGEudGFibGUgMS4xMi42IHVzaW5nIDIgdGhyZWFkcyAoc2VlID9nZXREVHRocmVhZHMpLiAgTGF0ZXN0IG5ld3M6IHItZGF0YXRhYmxlLmNvbVxuIn0= -->
-<pre><code>Loading required package: data.table
-Registered S3 method overwritten by &#39;data.table&#39;:
-  method           from
-  print.data.table     
-data.table 1.12.6 using 2 threads (see ?getDTthreads).  Latest news: r-datatable.com</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVxdWlyZSAobHVicmlkYXRlKVxuYGBgIn0= -->
-<pre class="r"><code>require (lubridate)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBsdWJyaWRhdGVcblxuQXR0YWNoaW5nIHBhY2thZ2U6IOOkvOO4sWx1YnJpZGF0ZeOkvOO4slxuXG5UaGUgZm9sbG93aW5nIG9iamVjdHMgYXJlIG1hc2tlZCBmcm9tIOOkvOO4sXBhY2thZ2U6ZGF0YS50YWJsZeOkvOO4sjpcblxuICAgIGhvdXIsIGlzb3dlZWssIG1kYXksIG1pbnV0ZSwgbW9udGgsIHF1YXJ0ZXIsIHNlY29uZCwgd2RheSwgd2VlaywgeWRheSwgeWVhclxuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDjpLzjuLFwYWNrYWdlOmJhc2XjpLzjuLI6XG5cbiAgICBkYXRlXG4ifQ== -->
-<pre><code>Loading required package: lubridate
-
-Attaching package: 㤼㸱lubridate㤼㸲
-
-The following objects are masked from 㤼㸱package:data.table㤼㸲:
-
-    hour, isoweek, mday, minute, month, quarter, second, wday, week, yday, year
-
-The following object is masked from 㤼㸱package:base㤼㸲:
-
-    date</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVxdWlyZSAoZ2dwbG90MilcbmBgYCJ9 -->
-<pre class="r"><code>require (ggplot2)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiTG9hZGluZyByZXF1aXJlZCBwYWNrYWdlOiBnZ3Bsb3QyXG5SZWdpc3RlcmVkIFMzIG1ldGhvZCBvdmVyd3JpdHRlbiBieSAnZHBseXInOlxuICBtZXRob2QgICAgICAgICAgIGZyb21cbiAgcHJpbnQucm93d2lzZV9kZiAgICAgXG4ifQ== -->
-<pre><code>Loading required package: ggplot2
-Registered S3 method overwritten by &#39;dplyr&#39;:
-  method           from
-  print.rowwise_df     </code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShyZWFkcikgICAgICAgICMgUGFja2FnZSB0byByZWFkIGRhdGEsIC5jc3YgZmlsZXNcbmxpYnJhcnkodGlkeXZlcnNlKVxuYGBgIn0= -->
-<pre class="r"><code>library(readr)        # Package to read data, .csv files
-library(tidyverse)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXHUwMDFiWzMwbS0tIFx1MDAxYlsxbUF0dGFjaGluZyBwYWNrYWdlc1x1MDAxYlsyMm0gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tIHRpZHl2ZXJzZSAxLjIuMSAtLVx1MDAxYlszOW1cblx1MDAxYlszMG1cdTAwMWJbMzJtdlx1MDAxYlszMG0gXHUwMDFiWzM0bXRpYmJsZSBcdTAwMWJbMzBtIDIuMS4zICAgICBcdTAwMWJbMzJtdlx1MDAxYlszMG0gXHUwMDFiWzM0bWRwbHlyICBcdTAwMWJbMzBtIDAuOC4zXG5cdTAwMWJbMzJtdlx1MDAxYlszMG0gXHUwMDFiWzM0bXRpZHlyICBcdTAwMWJbMzBtIDEuMC4wICAgICBcdTAwMWJbMzJtdlx1MDAxYlszMG0gXHUwMDFiWzM0bXN0cmluZ3JcdTAwMWJbMzBtIDEuNC4wXG5cdTAwMWJbMzJtdlx1MDAxYlszMG0gXHUwMDFiWzM0bXB1cnJyICBcdTAwMWJbMzBtIDAuMy4zICAgICBcdTAwMWJbMzJtdlx1MDAxYlszMG0gXHUwMDFiWzM0bWZvcmNhdHNcdTAwMWJbMzBtIDAuNC4wXHUwMDFiWzM5bVxuXHUwMDFiWzMwbS0tIFx1MDAxYlsxbUNvbmZsaWN0c1x1MDAxYlsyMm0gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tIHRpZHl2ZXJzZV9jb25mbGljdHMoKSAtLVxuXHUwMDFiWzMxbXhcdTAwMWJbMzBtIFx1MDAxYlszNG1sdWJyaWRhdGVcdTAwMWJbMzBtOjpcdTAwMWJbMzJtYXMuZGlmZnRpbWUoKVx1MDAxYlszMG0gbWFza3MgXHUwMDFiWzM0bWJhc2VcdTAwMWJbMzBtOjphcy5kaWZmdGltZSgpXG5cdTAwMWJbMzFteFx1MDAxYlszMG0gXHUwMDFiWzM0bWRwbHlyXHUwMDFiWzMwbTo6XHUwMDFiWzMybWJldHdlZW4oKVx1MDAxYlszMG0gICAgICAgICBtYXNrcyBcdTAwMWJbMzRtZGF0YS50YWJsZVx1MDAxYlszMG06OmJldHdlZW4oKVxuXHUwMDFiWzMxbXhcdTAwMWJbMzBtIFx1MDAxYlszNG1sdWJyaWRhdGVcdTAwMWJbMzBtOjpcdTAwMWJbMzJtZGF0ZSgpXHUwMDFiWzMwbSAgICAgICAgbWFza3MgXHUwMDFiWzM0bWJhc2VcdTAwMWJbMzBtOjpkYXRlKClcblx1MDAxYlszMW14XHUwMDFiWzMwbSBcdTAwMWJbMzRtZHBseXJcdTAwMWJbMzBtOjpcdTAwMWJbMzJtZmlsdGVyKClcdTAwMWJbMzBtICAgICAgICAgIG1hc2tzIFx1MDAxYlszNG1zdGF0c1x1MDAxYlszMG06OmZpbHRlcigpXG5cdTAwMWJbMzFteFx1MDAxYlszMG0gXHUwMDFiWzM0bWRwbHlyXHUwMDFiWzMwbTo6XHUwMDFiWzMybWZpcnN0KClcdTAwMWJbMzBtICAgICAgICAgICBtYXNrcyBcdTAwMWJbMzRtZGF0YS50YWJsZVx1MDAxYlszMG06OmZpcnN0KClcblx1MDAxYlszMW14XHUwMDFiWzMwbSBcdTAwMWJbMzRtbHVicmlkYXRlXHUwMDFiWzMwbTo6XHUwMDFiWzMybWhvdXIoKVx1MDAxYlszMG0gICAgICAgIG1hc2tzIFx1MDAxYlszNG1kYXRhLnRhYmxlXHUwMDFiWzMwbTo6aG91cigpXG5cdTAwMWJbMzFteFx1MDAxYlszMG0gXHUwMDFiWzM0bWx1YnJpZGF0ZVx1MDAxYlszMG06Olx1MDAxYlszMm1pbnRlcnNlY3QoKVx1MDAxYlszMG0gICBtYXNrcyBcdTAwMWJbMzRtYmFzZVx1MDAxYlszMG06OmludGVyc2VjdCgpXG5cdTAwMWJbMzFteFx1MDAxYlszMG0gXHUwMDFiWzM0bWx1YnJpZGF0ZVx1MDAxYlszMG06Olx1MDAxYlszMm1pc293ZWVrKClcdTAwMWJbMzBtICAgICBtYXNrcyBcdTAwMWJbMzRtZGF0YS50YWJsZVx1MDAxYlszMG06Omlzb3dlZWsoKVxuXHUwMDFiWzMxbXhcdTAwMWJbMzBtIFx1MDAxYlszNG1kcGx5clx1MDAxYlszMG06Olx1MDAxYlszMm1sYWcoKVx1MDAxYlszMG0gICAgICAgICAgICAgbWFza3MgXHUwMDFiWzM0bXN0YXRzXHUwMDFiWzMwbTo6bGFnKClcblx1MDAxYlszMW14XHUwMDFiWzMwbSBcdTAwMWJbMzRtZHBseXJcdTAwMWJbMzBtOjpcdTAwMWJbMzJtbGFzdCgpXHUwMDFiWzMwbSAgICAgICAgICAgIG1hc2tzIFx1MDAxYlszNG1kYXRhLnRhYmxlXHUwMDFiWzMwbTo6bGFzdCgpXG5cdTAwMWJbMzFteFx1MDAxYlszMG0gXHUwMDFiWzM0bWx1YnJpZGF0ZVx1MDAxYlszMG06Olx1MDAxYlszMm1tZGF5KClcdTAwMWJbMzBtICAgICAgICBtYXNrcyBcdTAwMWJbMzRtZGF0YS50YWJsZVx1MDAxYlszMG06Om1kYXkoKVxuXHUwMDFiWzMxbXhcdTAwMWJbMzBtIFx1MDAxYlszNG1sdWJyaWRhdGVcdTAwMWJbMzBtOjpcdTAwMWJbMzJtbWludXRlKClcdTAwMWJbMzBtICAgICAgbWFza3MgXHUwMDFiWzM0bWRhdGEudGFibGVcdTAwMWJbMzBtOjptaW51dGUoKVxuXHUwMDFiWzMxbXhcdTAwMWJbMzBtIFx1MDAxYlszNG1sdWJyaWRhdGVcdTAwMWJbMzBtOjpcdTAwMWJbMzJtbW9udGgoKVx1MDAxYlszMG0gICAgICAgbWFza3MgXHUwMDFiWzM0bWRhdGEudGFibGVcdTAwMWJbMzBtOjptb250aCgpXG5cdTAwMWJbMzFteFx1MDAxYlszMG0gXHUwMDFiWzM0bWx1YnJpZGF0ZVx1MDAxYlszMG06Olx1MDAxYlszMm1xdWFydGVyKClcdTAwMWJbMzBtICAgICBtYXNrcyBcdTAwMWJbMzRtZGF0YS50YWJsZVx1MDAxYlszMG06OnF1YXJ0ZXIoKVxuXHUwMDFiWzMxbXhcdTAwMWJbMzBtIFx1MDAxYlszNG1sdWJyaWRhdGVcdTAwMWJbMzBtOjpcdTAwMWJbMzJtc2Vjb25kKClcdTAwMWJbMzBtICAgICAgbWFza3MgXHUwMDFiWzM0bWRhdGEudGFibGVcdTAwMWJbMzBtOjpzZWNvbmQoKVxuXHUwMDFiWzMxbXhcdTAwMWJbMzBtIFx1MDAxYlszNG1sdWJyaWRhdGVcdTAwMWJbMzBtOjpcdTAwMWJbMzJtc2V0ZGlmZigpXHUwMDFiWzMwbSAgICAgbWFza3MgXHUwMDFiWzM0bWJhc2VcdTAwMWJbMzBtOjpzZXRkaWZmKClcblx1MDAxYlszMW14XHUwMDFiWzMwbSBcdTAwMWJbMzRtcHVycnJcdTAwMWJbMzBtOjpcdTAwMWJbMzJtdHJhbnNwb3NlKClcdTAwMWJbMzBtICAgICAgIG1hc2tzIFx1MDAxYlszNG1kYXRhLnRhYmxlXHUwMDFiWzMwbTo6dHJhbnNwb3NlKClcblx1MDAxYlszMW14XHUwMDFiWzMwbSBcdTAwMWJbMzRtbHVicmlkYXRlXHUwMDFiWzMwbTo6XHUwMDFiWzMybXVuaW9uKClcdTAwMWJbMzBtICAgICAgIG1hc2tzIFx1MDAxYlszNG1iYXNlXHUwMDFiWzMwbTo6dW5pb24oKVxuXHUwMDFiWzMxbXhcdTAwMWJbMzBtIFx1MDAxYlszNG1sdWJyaWRhdGVcdTAwMWJbMzBtOjpcdTAwMWJbMzJtd2RheSgpXHUwMDFiWzMwbSAgICAgICAgbWFza3MgXHUwMDFiWzM0bWRhdGEudGFibGVcdTAwMWJbMzBtOjp3ZGF5KClcblx1MDAxYlszMW14XHUwMDFiWzMwbSBcdTAwMWJbMzRtbHVicmlkYXRlXHUwMDFiWzMwbTo6XHUwMDFiWzMybXdlZWsoKVx1MDAxYlszMG0gICAgICAgIG1hc2tzIFx1MDAxYlszNG1kYXRhLnRhYmxlXHUwMDFiWzMwbTo6d2VlaygpXG5cdTAwMWJbMzFteFx1MDAxYlszMG0gXHUwMDFiWzM0bWx1YnJpZGF0ZVx1MDAxYlszMG06Olx1MDAxYlszMm15ZGF5KClcdTAwMWJbMzBtICAgICAgICBtYXNrcyBcdTAwMWJbMzRtZGF0YS50YWJsZVx1MDAxYlszMG06OnlkYXkoKVxuXHUwMDFiWzMxbXhcdTAwMWJbMzBtIFx1MDAxYlszNG1sdWJyaWRhdGVcdTAwMWJbMzBtOjpcdTAwMWJbMzJteWVhcigpXHUwMDFiWzMwbSAgICAgICAgbWFza3MgXHUwMDFiWzM0bWRhdGEudGFibGVcdTAwMWJbMzBtOjp5ZWFyKClcdTAwMWJbMzltXG4ifQ== -->
-<pre><code>[30m-- [1mAttaching packages[22m --------------------------------------- tidyverse 1.2.1 --[39m
-[30m[32mv[30m [34mtibble [30m 2.1.3     [32mv[30m [34mdplyr  [30m 0.8.3
-[32mv[30m [34mtidyr  [30m 1.0.0     [32mv[30m [34mstringr[30m 1.4.0
-[32mv[30m [34mpurrr  [30m 0.3.3     [32mv[30m [34mforcats[30m 0.4.0[39m
-[30m-- [1mConflicts[22m ------------------------------------------ tidyverse_conflicts() --
-[31mx[30m [34mlubridate[30m::[32mas.difftime()[30m masks [34mbase[30m::as.difftime()
-[31mx[30m [34mdplyr[30m::[32mbetween()[30m         masks [34mdata.table[30m::between()
-[31mx[30m [34mlubridate[30m::[32mdate()[30m        masks [34mbase[30m::date()
-[31mx[30m [34mdplyr[30m::[32mfilter()[30m          masks [34mstats[30m::filter()
-[31mx[30m [34mdplyr[30m::[32mfirst()[30m           masks [34mdata.table[30m::first()
-[31mx[30m [34mlubridate[30m::[32mhour()[30m        masks [34mdata.table[30m::hour()
-[31mx[30m [34mlubridate[30m::[32mintersect()[30m   masks [34mbase[30m::intersect()
-[31mx[30m [34mlubridate[30m::[32misoweek()[30m     masks [34mdata.table[30m::isoweek()
-[31mx[30m [34mdplyr[30m::[32mlag()[30m             masks [34mstats[30m::lag()
-[31mx[30m [34mdplyr[30m::[32mlast()[30m            masks [34mdata.table[30m::last()
-[31mx[30m [34mlubridate[30m::[32mmday()[30m        masks [34mdata.table[30m::mday()
-[31mx[30m [34mlubridate[30m::[32mminute()[30m      masks [34mdata.table[30m::minute()
-[31mx[30m [34mlubridate[30m::[32mmonth()[30m       masks [34mdata.table[30m::month()
-[31mx[30m [34mlubridate[30m::[32mquarter()[30m     masks [34mdata.table[30m::quarter()
-[31mx[30m [34mlubridate[30m::[32msecond()[30m      masks [34mdata.table[30m::second()
-[31mx[30m [34mlubridate[30m::[32msetdiff()[30m     masks [34mbase[30m::setdiff()
-[31mx[30m [34mpurrr[30m::[32mtranspose()[30m       masks [34mdata.table[30m::transpose()
-[31mx[30m [34mlubridate[30m::[32munion()[30m       masks [34mbase[30m::union()
-[31mx[30m [34mlubridate[30m::[32mwday()[30m        masks [34mdata.table[30m::wday()
-[31mx[30m [34mlubridate[30m::[32mweek()[30m        masks [34mdata.table[30m::week()
-[31mx[30m [34mlubridate[30m::[32myday()[30m        masks [34mdata.table[30m::yday()
-[31mx[30m [34mlubridate[30m::[32myear()[30m        masks [34mdata.table[30m::year()[39m</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShtYWdyaXR0cikgICAgICMgVG8gaW5jbHVkZSBwaXBlIGxpa2Ugb3BlcmF0b3IgJT4lXG5gYGAifQ== -->
-<pre class="r"><code>library(magrittr)     # To include pipe like operator %&gt;%</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5BdHRhY2hpbmcgcGFja2FnZTog46S847ixbWFncml0dHLjpLzjuLJcblxuVGhlIGZvbGxvd2luZyBvYmplY3QgaXMgbWFza2VkIGZyb20g46S847ixcGFja2FnZTpwdXJycuOkvOO4sjpcblxuICAgIHNldF9uYW1lc1xuXG5UaGUgZm9sbG93aW5nIG9iamVjdCBpcyBtYXNrZWQgZnJvbSDjpLzjuLFwYWNrYWdlOnRpZHly46S847iyOlxuXG4gICAgZXh0cmFjdFxuIn0= -->
-<pre><code>
-Attaching package: 㤼㸱magrittr㤼㸲
-
-The following object is masked from 㤼㸱package:purrr㤼㸲:
-
-    set_names
-
-The following object is masked from 㤼㸱package:tidyr㤼㸲:
-
-    extract</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmBgYCJ9 -->
-<pre class="r"><code>library(dplyr)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVxdWlyZSAobHVicmlkYXRlKVxucmVxdWlyZSAoZGF0YS50YWJsZSlcbnJlcXVpcmUgKGdncGxvdDIpXG5saWJyYXJ5KHJlYWRyKSAgICAgICAgIyBQYWNrYWdlIHRvIHJlYWQgZGF0YSwgLmNzdiBmaWxlc1xubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KG1hZ3JpdHRyKSAgICAgIyBUbyBpbmNsdWRlIHBpcGUgbGlrZSBvcGVyYXRvciAlPiVcbmxpYnJhcnkoZHBseXIpXG5gYGAifQ== -->
+<pre class="r"><code>require (lubridate)
+require (data.table)
+require (ggplot2)
+library(readr)        # Package to read data, .csv files
+library(tidyverse)
+library(magrittr)     # To include pipe like operator %&gt;%
+library(dplyr)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuR0hHX21hcmdpbmFsX2VtaXNzaW9ucyA8LSBmcmVhZChcIjIwMTdfUlQ1TV9NYXJnaW5hbF9FbWlzc2lvbnNfUmF0ZXNfRGF0YWZyYW1lLmNzdlwiKVxuXG4jIGFkZCBtZXRhIGRhdGFcbkdIR19tYXJnaW5hbF9lbWlzc2lvbnNbICwgeWVhciA6PSB5ZWFyKERhdGVfVGltZV9QYWNpZmljKV1cbkdIR19tYXJnaW5hbF9lbWlzc2lvbnNbICwgbW9udGggOj0gbW9udGgoRGF0ZV9UaW1lX1BhY2lmaWMpXVxuR0hHX21hcmdpbmFsX2VtaXNzaW9uc1sgLCB3ZGF5IDo9IHdkYXkoRGF0ZV9UaW1lX1BhY2lmaWMsIGxhYmVsID0gVFJVRSldXG5HSEdfbWFyZ2luYWxfZW1pc3Npb25zWyAsIGRob3VyIDo9IGhvdXIoRGF0ZV9UaW1lX1BhY2lmaWMpXVxuR0hHX21hcmdpbmFsX2VtaXNzaW9uc1sgLCBkYXl0eXBlIDo9IFwid2Vla2RheVwiXVxuR0hHX21hcmdpbmFsX2VtaXNzaW9uc1sgd2RheSA9PSBcIlNhdFwiIHwgd2RheSA9PSBcIlN1blwiLCBkYXl0eXBlIDo9IFwid2Vla2VuZFwiXVxuR0hHX21hcmdpbmFsX2VtaXNzaW9uc1sgLCBkYXlPZnllYXIgOj0geWRheShEYXRlX1RpbWVfUGFjaWZpYyldXG5cbiMgTWFrZSBhIHN1bW1hcnkgdGFibGUgZm9yIE5vcnRoIHBhdGggYW5kIFNvdXRoIHBhdGhcbkdIR19tZV9OUCA8LSBHSEdfbWFyZ2luYWxfZW1pc3Npb25zWyAsIC4oYXZnX3JhdGUgPSBtZWFuKGBSVDVNX05QMTVfRW1pc3Npb25zX1JhdGVgKSksIGJ5ID0gLihtb250aCwgZGhvdXIsIGRheXR5cGUpXVxuR0hHX21lX1NQIDwtIEdIR19tYXJnaW5hbF9lbWlzc2lvbnNbICwgLihhdmdfcmF0ZSA9IG1lYW4oYFJUNU1fU1AxNV9FbWlzc2lvbnNfUmF0ZWApKSwgYnkgPSAuKG1vbnRoLCBkaG91ciwgZGF5dHlwZSldXG5cbiMgUGxvdCBOb3J0aCBQYXRoIDE1IEdIRyBtYXJnaW5hbCBlbWlzc2lvbiByYXRlXG5nZ3Bsb3QoR0hHX21lX05QLCBhZXMoeCA9IGRob3VyLCB5ID0gYXZnX3JhdGUpKSArIGdlb21fbGluZShhZXMobGluZXR5cGUgPSBkYXl0eXBlKSkgKyB0aGVtZV9ncmF5KGJhc2Vfc2l6ZSA9IDEzKSArIGZhY2V0X3dyYXAoXCJtb250aFwiKSArIGxhYnMoeCA9IFwiSG91ciBvZiBEYXlcIiwgeSA9IFwiRW1pc3Npb25zKGtnL2tXaClcIilcbmBgYCJ9 -->
-<pre class="r"><code>GHG_marginal_emissions &lt;- fread(&quot;2017_RT5M_Marginal_Emissions_Rates_Dataframe.csv&quot;)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5HSEdfbWFyZ2luYWxfZW1pc3Npb25zIDwtIGZyZWFkKFwiMjAxN19SVDVNX01hcmdpbmFsX0VtaXNzaW9uc19SYXRlc19EYXRhZnJhbWUuY3N2XCIpXG5cbiMgYWRkIG1ldGEgZGF0YVxuR0hHX21hcmdpbmFsX2VtaXNzaW9uc1sgLCB5ZWFyIDo9IHllYXIoRGF0ZV9UaW1lX1BhY2lmaWMpXVxuR0hHX21hcmdpbmFsX2VtaXNzaW9uc1sgLCBtb250aCA6PSBtb250aChEYXRlX1RpbWVfUGFjaWZpYyldXG5HSEdfbWFyZ2luYWxfZW1pc3Npb25zWyAsIHdkYXkgOj0gbHVicmlkYXRlOjp3ZGF5KERhdGVfVGltZV9QYWNpZmljLCBsYWJlbCA9IFRSVUUpXVxuR0hHX21hcmdpbmFsX2VtaXNzaW9uc1sgLCBkaG91ciA6PSBob3VyKERhdGVfVGltZV9QYWNpZmljKV1cbkdIR19tYXJnaW5hbF9lbWlzc2lvbnNbICwgZGF5dHlwZSA6PSBcIndlZWtkYXlcIl1cbkdIR19tYXJnaW5hbF9lbWlzc2lvbnNbIHdkYXkgPT0gXCJTYXRcIiB8IHdkYXkgPT0gXCJTdW5cIiwgZGF5dHlwZSA6PSBcIndlZWtlbmRcIl1cbkdIR19tYXJnaW5hbF9lbWlzc2lvbnNbICwgZGF5T2Z5ZWFyIDo9IHlkYXkoRGF0ZV9UaW1lX1BhY2lmaWMpXVxuXG4jIE1ha2UgYSBzdW1tYXJ5IHRhYmxlIGZvciBOb3J0aCBwYXRoIGFuZCBTb3V0aCBwYXRoXG5HSEdfbWVfTlAgPC0gR0hHX21hcmdpbmFsX2VtaXNzaW9uc1sgLCAuKGF2Z19yYXRlID0gbWVhbihgUlQ1TV9OUDE1X0VtaXNzaW9uc19SYXRlYCkpLCBieSA9IC4obW9udGgsIGRob3VyLCBkYXl0eXBlKV1cbkdIR19tZV9TUCA8LSBHSEdfbWFyZ2luYWxfZW1pc3Npb25zWyAsIC4oYXZnX3JhdGUgPSBtZWFuKGBSVDVNX1NQMTVfRW1pc3Npb25zX1JhdGVgKSksIGJ5ID0gLihtb250aCwgZGhvdXIsIGRheXR5cGUpXVxuXG4jIFBsb3QgTm9ydGggUGF0aCAxNSBHSEcgbWFyZ2luYWwgZW1pc3Npb24gcmF0ZVxuZ2dwbG90KEdIR19tZV9OUCwgYWVzKHggPSBkaG91ciwgeSA9IGF2Z19yYXRlKSkgKyBnZW9tX2xpbmUoYWVzKGxpbmV0eXBlID0gZGF5dHlwZSkpICsgdGhlbWVfZ3JheShiYXNlX3NpemUgPSAxMykgKyBmYWNldF93cmFwKFwibW9udGhcIikgKyBsYWJzKHggPSBcIkhvdXIgb2YgRGF5XCIsIHkgPSBcIkVtaXNzaW9ucyhrZy9rV2gpXCIpXG5gYGAifQ== -->
+<pre class="r"><code>
+GHG_marginal_emissions &lt;- fread(&quot;2017_RT5M_Marginal_Emissions_Rates_Dataframe.csv&quot;)
 
 # add meta data
 GHG_marginal_emissions[ , year := year(Date_Time_Pacific)]
 GHG_marginal_emissions[ , month := month(Date_Time_Pacific)]
-GHG_marginal_emissions[ , wday := wday(Date_Time_Pacific, label = TRUE)]
+GHG_marginal_emissions[ , wday := lubridate::wday(Date_Time_Pacific, label = TRUE)]
 GHG_marginal_emissions[ , dhour := hour(Date_Time_Pacific)]
 GHG_marginal_emissions[ , daytype := &quot;weekday&quot;]
 GHG_marginal_emissions[ wday == &quot;Sat&quot; | wday == &quot;Sun&quot;, daytype := &quot;weekend&quot;]
@@ -1875,17 +1799,18 @@ ggplot(GHG_me_SP, aes(x = dhour, y = avg_rate)) + geom_line(aes(linetype = dayty
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuR0hHX05QX2hvdXIgPC0gR0hHX21hcmdpbmFsX2VtaXNzaW9ucyAlPiUgXG4gIG11dGF0ZShIciA9IGRob3VyICsgMSkgJT4lIFxuICAgZ3JvdXBfYnkobW9udGgsIGRheU9meWVhciwgSHIpICU+JVxuICAgc3VtbWFyaXNlKEdIR19ob3VybHkgPSBtZWFuKFJUNU1fTlAxNV9FbWlzc2lvbnNfUmF0ZSkpIFxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuR0hHX05QX2hvdXIgPC0gR0hHX21hcmdpbmFsX2VtaXNzaW9ucyAlPiUgXG4gIG11dGF0ZShIciA9IGRob3VyICsgMSkgJT4lIFxuICAgZ3JvdXBfYnkobW9udGgsIGRheU9meWVhciwgSHIpICU+JVxuICAgc3VtbWFyaXNlKEdIR19ob3VybHlfbm9ydGggPSBtZWFuKFJUNU1fTlAxNV9FbWlzc2lvbnNfUmF0ZSksXG4gICAgICAgICAgICAgR0hHX2hvdXJseV9zb3V0aCA9IG1lYW4oUlQ1TV9TUDE1X0VtaXNzaW9uc19SYXRlKSkgXG5gYGAifQ== -->
 <pre class="r"><code>GHG_NP_hour &lt;- GHG_marginal_emissions %&gt;% 
   mutate(Hr = dhour + 1) %&gt;% 
    group_by(month, dayOfyear, Hr) %&gt;%
-   summarise(GHG_hourly = mean(RT5M_NP15_Emissions_Rate)) </code></pre>
+   summarise(GHG_hourly_north = mean(RT5M_NP15_Emissions_Rate),
+             GHG_hourly_south = mean(RT5M_SP15_Emissions_Rate)) </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQoNCg0KDQpgYGB7cn0NCnJlcXVpcmUgKGRhdGEudGFibGUpDQpyZXF1aXJlIChsdWJyaWRhdGUpDQpyZXF1aXJlIChnZ3Bsb3QyKQ0KbGlicmFyeShyZWFkcikgICAgICAgICMgUGFja2FnZSB0byByZWFkIGRhdGEsIC5jc3YgZmlsZXMNCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShtYWdyaXR0cikgICAgICMgVG8gaW5jbHVkZSBwaXBlIGxpa2Ugb3BlcmF0b3IgJT4lDQpsaWJyYXJ5KGRwbHlyKQ0KYGBgDQoNCg0KYGBge3J9DQpHSEdfbWFyZ2luYWxfZW1pc3Npb25zIDwtIGZyZWFkKCIyMDE3X1JUNU1fTWFyZ2luYWxfRW1pc3Npb25zX1JhdGVzX0RhdGFmcmFtZS5jc3YiKQ0KDQojIGFkZCBtZXRhIGRhdGENCkdIR19tYXJnaW5hbF9lbWlzc2lvbnNbICwgeWVhciA6PSB5ZWFyKERhdGVfVGltZV9QYWNpZmljKV0NCkdIR19tYXJnaW5hbF9lbWlzc2lvbnNbICwgbW9udGggOj0gbW9udGgoRGF0ZV9UaW1lX1BhY2lmaWMpXQ0KR0hHX21hcmdpbmFsX2VtaXNzaW9uc1sgLCB3ZGF5IDo9IHdkYXkoRGF0ZV9UaW1lX1BhY2lmaWMsIGxhYmVsID0gVFJVRSldDQpHSEdfbWFyZ2luYWxfZW1pc3Npb25zWyAsIGRob3VyIDo9IGhvdXIoRGF0ZV9UaW1lX1BhY2lmaWMpXQ0KR0hHX21hcmdpbmFsX2VtaXNzaW9uc1sgLCBkYXl0eXBlIDo9ICJ3ZWVrZGF5Il0NCkdIR19tYXJnaW5hbF9lbWlzc2lvbnNbIHdkYXkgPT0gIlNhdCIgfCB3ZGF5ID09ICJTdW4iLCBkYXl0eXBlIDo9ICJ3ZWVrZW5kIl0NCkdIR19tYXJnaW5hbF9lbWlzc2lvbnNbICwgZGF5T2Z5ZWFyIDo9IHlkYXkoRGF0ZV9UaW1lX1BhY2lmaWMpXQ0KDQojIE1ha2UgYSBzdW1tYXJ5IHRhYmxlIGZvciBOb3J0aCBwYXRoIGFuZCBTb3V0aCBwYXRoDQpHSEdfbWVfTlAgPC0gR0hHX21hcmdpbmFsX2VtaXNzaW9uc1sgLCAuKGF2Z19yYXRlID0gbWVhbihgUlQ1TV9OUDE1X0VtaXNzaW9uc19SYXRlYCkpLCBieSA9IC4obW9udGgsIGRob3VyLCBkYXl0eXBlKV0NCkdIR19tZV9TUCA8LSBHSEdfbWFyZ2luYWxfZW1pc3Npb25zWyAsIC4oYXZnX3JhdGUgPSBtZWFuKGBSVDVNX1NQMTVfRW1pc3Npb25zX1JhdGVgKSksIGJ5ID0gLihtb250aCwgZGhvdXIsIGRheXR5cGUpXQ0KDQojIFBsb3QgTm9ydGggUGF0aCAxNSBHSEcgbWFyZ2luYWwgZW1pc3Npb24gcmF0ZQ0KZ2dwbG90KEdIR19tZV9OUCwgYWVzKHggPSBkaG91ciwgeSA9IGF2Z19yYXRlKSkgKyBnZW9tX2xpbmUoYWVzKGxpbmV0eXBlID0gZGF5dHlwZSkpICsgdGhlbWVfZ3JheShiYXNlX3NpemUgPSAxMykgKyBmYWNldF93cmFwKCJtb250aCIpICsgbGFicyh4ID0gIkhvdXIgb2YgRGF5IiwgeSA9ICJFbWlzc2lvbnMoa2cva1doKSIpDQojIFBsb3QgU291dGggUGF0aCAxNSBHSEcgbWFyZ2luYWwgZW1pc3Npb24gcmF0ZQ0KZ2dwbG90KEdIR19tZV9TUCwgYWVzKHggPSBkaG91ciwgeSA9IGF2Z19yYXRlKSkgKyBnZW9tX2xpbmUoYWVzKGxpbmV0eXBlID0gZGF5dHlwZSkpICsgdGhlbWVfZ3JheShiYXNlX3NpemUgPSAxMykgKyBmYWNldF93cmFwKCJtb250aCIpICsgbGFicyh4ID0gIkhvdXIgb2YgRGF5IiwgeSA9ICJFbWlzc2lvbnMoa2cva1doKSIpDQoNCmBgYA0KDQpgYGB7cn0NCkdIR19OUF9ob3VyIDwtIEdIR19tYXJnaW5hbF9lbWlzc2lvbnMgJT4lIA0KICBtdXRhdGUoSHIgPSBkaG91ciArIDEpICU+JSANCiAgIGdyb3VwX2J5KG1vbnRoLCBkYXlPZnllYXIsIEhyKSAlPiUNCiAgIHN1bW1hcmlzZShHSEdfaG91cmx5ID0gbWVhbihSVDVNX05QMTVfRW1pc3Npb25zX1JhdGUpKSANCmBgYA0KDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQoNCmBgYHtyfQ0KcmVxdWlyZSAobHVicmlkYXRlKQ0KcmVxdWlyZSAoZGF0YS50YWJsZSkNCnJlcXVpcmUgKGdncGxvdDIpDQpsaWJyYXJ5KHJlYWRyKSAgICAgICAgIyBQYWNrYWdlIHRvIHJlYWQgZGF0YSwgLmNzdiBmaWxlcw0KbGlicmFyeSh0aWR5dmVyc2UpDQpsaWJyYXJ5KG1hZ3JpdHRyKSAgICAgIyBUbyBpbmNsdWRlIHBpcGUgbGlrZSBvcGVyYXRvciAlPiUNCmxpYnJhcnkoZHBseXIpDQpgYGANCg0KDQpgYGB7cn0NCg0KR0hHX21hcmdpbmFsX2VtaXNzaW9ucyA8LSBmcmVhZCgiMjAxN19SVDVNX01hcmdpbmFsX0VtaXNzaW9uc19SYXRlc19EYXRhZnJhbWUuY3N2IikNCg0KIyBhZGQgbWV0YSBkYXRhDQpHSEdfbWFyZ2luYWxfZW1pc3Npb25zWyAsIHllYXIgOj0geWVhcihEYXRlX1RpbWVfUGFjaWZpYyldDQpHSEdfbWFyZ2luYWxfZW1pc3Npb25zWyAsIG1vbnRoIDo9IG1vbnRoKERhdGVfVGltZV9QYWNpZmljKV0NCkdIR19tYXJnaW5hbF9lbWlzc2lvbnNbICwgd2RheSA6PSBsdWJyaWRhdGU6OndkYXkoRGF0ZV9UaW1lX1BhY2lmaWMsIGxhYmVsID0gVFJVRSldDQpHSEdfbWFyZ2luYWxfZW1pc3Npb25zWyAsIGRob3VyIDo9IGhvdXIoRGF0ZV9UaW1lX1BhY2lmaWMpXQ0KR0hHX21hcmdpbmFsX2VtaXNzaW9uc1sgLCBkYXl0eXBlIDo9ICJ3ZWVrZGF5Il0NCkdIR19tYXJnaW5hbF9lbWlzc2lvbnNbIHdkYXkgPT0gIlNhdCIgfCB3ZGF5ID09ICJTdW4iLCBkYXl0eXBlIDo9ICJ3ZWVrZW5kIl0NCkdIR19tYXJnaW5hbF9lbWlzc2lvbnNbICwgZGF5T2Z5ZWFyIDo9IHlkYXkoRGF0ZV9UaW1lX1BhY2lmaWMpXQ0KDQojIE1ha2UgYSBzdW1tYXJ5IHRhYmxlIGZvciBOb3J0aCBwYXRoIGFuZCBTb3V0aCBwYXRoDQpHSEdfbWVfTlAgPC0gR0hHX21hcmdpbmFsX2VtaXNzaW9uc1sgLCAuKGF2Z19yYXRlID0gbWVhbihgUlQ1TV9OUDE1X0VtaXNzaW9uc19SYXRlYCkpLCBieSA9IC4obW9udGgsIGRob3VyLCBkYXl0eXBlKV0NCkdIR19tZV9TUCA8LSBHSEdfbWFyZ2luYWxfZW1pc3Npb25zWyAsIC4oYXZnX3JhdGUgPSBtZWFuKGBSVDVNX1NQMTVfRW1pc3Npb25zX1JhdGVgKSksIGJ5ID0gLihtb250aCwgZGhvdXIsIGRheXR5cGUpXQ0KDQojIFBsb3QgTm9ydGggUGF0aCAxNSBHSEcgbWFyZ2luYWwgZW1pc3Npb24gcmF0ZQ0KZ2dwbG90KEdIR19tZV9OUCwgYWVzKHggPSBkaG91ciwgeSA9IGF2Z19yYXRlKSkgKyBnZW9tX2xpbmUoYWVzKGxpbmV0eXBlID0gZGF5dHlwZSkpICsgdGhlbWVfZ3JheShiYXNlX3NpemUgPSAxMykgKyBmYWNldF93cmFwKCJtb250aCIpICsgbGFicyh4ID0gIkhvdXIgb2YgRGF5IiwgeSA9ICJFbWlzc2lvbnMoa2cva1doKSIpDQojIFBsb3QgU291dGggUGF0aCAxNSBHSEcgbWFyZ2luYWwgZW1pc3Npb24gcmF0ZQ0KZ2dwbG90KEdIR19tZV9TUCwgYWVzKHggPSBkaG91ciwgeSA9IGF2Z19yYXRlKSkgKyBnZW9tX2xpbmUoYWVzKGxpbmV0eXBlID0gZGF5dHlwZSkpICsgdGhlbWVfZ3JheShiYXNlX3NpemUgPSAxMykgKyBmYWNldF93cmFwKCJtb250aCIpICsgbGFicyh4ID0gIkhvdXIgb2YgRGF5IiwgeSA9ICJFbWlzc2lvbnMoa2cva1doKSIpDQoNCmBgYA0KDQpgYGB7cn0NCkdIR19OUF9ob3VyIDwtIEdIR19tYXJnaW5hbF9lbWlzc2lvbnMgJT4lIA0KICBtdXRhdGUoSHIgPSBkaG91ciArIDEpICU+JSANCiAgIGdyb3VwX2J5KG1vbnRoLCBkYXlPZnllYXIsIEhyKSAlPiUNCiAgIHN1bW1hcmlzZShHSEdfaG91cmx5X25vcnRoID0gbWVhbihSVDVNX05QMTVfRW1pc3Npb25zX1JhdGUpLA0KICAgICAgICAgICAgIEdIR19ob3VybHlfc291dGggPSBtZWFuKFJUNU1fU1AxNV9FbWlzc2lvbnNfUmF0ZSkpIA0KYGBgDQoNCg==</div>
 
 
 

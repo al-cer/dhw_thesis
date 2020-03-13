@@ -199,7 +199,7 @@ group_by(dayofyear) %>%
   summarise(ghg = sum(ghg))
   
 ggplot(ghg_cz6, aes(x=ghg)) + geom_histogram(binwidth = 0.20) + geom_vline(aes(xintercept=mean(ghg)),
-            color="blue", linetype="dashed", size=1)
+            color="blue", linetype="dashed", size=1) + labs(x ="GHG emissions (kg CO2/kWh)", y= "Days") + theme_pack
 ```
 
 
