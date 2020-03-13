@@ -246,18 +246,18 @@ CZ12_145 <- CZ12_145 %>%
 
 ```{r}
 # numbers from PG&E rate structure
-peak_summer <- 0.39757 
-off.peak_summer <- 0.29451
+peak_summer <- 0.2941 
+off.peak_summer <- 0.1435
 
-peak_winter <- 0.26011
-off.peak_winter <- 0.24131 
+peak_winter <- 0.1888
+off.peak_winter <- 0.1006 
 
 summer <- c(5:10)
 winter <- c(1:4,11,12)
 
 # rate strcuture for EV fleet
-peak.hr <- c(16:21)
-off.peak.hr <- c(1:15,22:24)
+peak.hr <- c(15:20)
+off.peak.hr <- c(1:14,21:24)
 
 rate_therm <- 0.30
 
@@ -488,6 +488,150 @@ energy_table_summary_cz12 <- data.frame(total_erwh_bc = sum(CZ12_145$Dhw_CZ12_ER
                                        total_hpwh36_mix = sum(CZ12_145$Dhw_CZ12_HPWH_bu_SF_3_to_6_kWh_mixed),
                                        total_hpwh101_mix = sum(CZ12_145$Dhw_CZ12_HPWH_bu_SF_10_to_1_kWh_mixed))
 
+
+```
+
+
+
+############# Proposed rate Structure ###########
+
+```{r}
+# numbers from PG&E rate structure
+peak_summer <- 0.55485 
+off.peak_summer <- 0.27743
+
+peak_winter <- 0.27935
+off.peak_winter <- 0.26040 
+
+peak_spring <- 0.34612
+off.peak_spring <- 0.25700
+SOP_spring <- 0.17306
+
+spring <- c(3:5)
+summer <- c(6:9)
+winter <- c(1,2,10:12)
+
+# rate strcuture for EV fleet
+peak.hr <- c(16:21)
+off.peak.hr <- c(1:10,22:24)
+SOP.hr <- c(10:15)
+
+rate_therm <- 1.44
+
+CZ12_145 <-
+  CZ12_145 %>%
+  mutate(time = as.hms(Hr))
+
+CZ12_145 <- CZ12_145 %>%
+  mutate(Dhw_CZ12_therm = Dhw_CZ12_NG / to_therm)
+
+# build in rate structure
+CZ12_145 <-
+  CZ12_145 %>%
+  mutate(rate = case_when(second(as.hms(Hr)) %in% peak.hr & Mon %in% winter ~ peak_winter,                                                                          second(as.hms(Hr)) %in% peak.hr & Mon %in% summer ~ peak_summer,
+                          second(as.hms(Hr)) %in% peak.hr & Mon %in% spring ~ peak_spring,
+                          
+                          second(as.hms(Hr)) %in% off.peak.hr & Mon %in% winter ~ off.peak_winter,
+                          second(as.hms(Hr)) %in% off.peak.hr & Mon %in% summer ~ off.peak_summer,
+                          second(as.hms(Hr)) %in% off.peak.hr & Mon %in% spring ~ off.peak_spring,
+                          
+                          second(as.hms(Hr)) %in% SOP.hr & Mon %in% spring ~ SOP_spring,
+                          second(as.hms(Hr)) %in% SOP.hr & Mon %in% winter ~ off.peak_winter,
+                          second(as.hms(Hr)) %in% SOP.hr & Mon %in% summer ~ off.peak_summer))
+
+CZ12_145 <-
+  CZ12_145 %>%
+  mutate(Dhw_CZ12_ERWH_SF_bc_cost = Dhw_CZ12_ERWH_SF_bc_kWh * rate, 
+         #Dhw_CZ1_HPWH_SF_bc_cost = Dhw_CZ1_HPWH_SF_bc_kWh * rate, 
+         Dhw_CZ12_HPWH_bu_SF_bc_cost = Dhw_CZ12_HPWH_bu_SF_bc_kWh * rate,
+         Dhw_CZ12_HPWH_bu2_SF_bc_cost = Dhw_CZ12_HPWH_bu2_SF_bc_kWh * rate, 
+         Dhw_CZ12_HPWH_backup_SF_bc_cost = Dhw_CZ12_HPWH_bu_SF_bc_cost + Dhw_CZ12_HPWH_bu2_SF_bc_cost,
+        
+         
+         Dhw_CZ12_ERWH_SF_3_to_6_cost = Dhw_CZ12_ERWH_SF_3_to_6_kWh * rate, 
+         Dhw_CZ12_ERWH_SF_3_to_6_mixed_cost = Dhw_CZ12_ERWH_SF_3_to_6_kWh_mixed * rate,
+         #Dhw_CZ1_HPWH_SF_3_to_6_cost = Dhw_CZ1_HPWH_SF_3_to_6_kWh * rate, 
+         Dhw_CZ12_HPWH_bu_SF_3_to_6_cost = Dhw_CZ12_HPWH_bu_SF_3_to_6_kWh * rate,
+         Dhw_CZ12_HPWH_bu2_SF_3_to_6_cost = Dhw_CZ12_HPWH_bu2_SF_3_to_6_kWh * rate,
+         Dhw_CZ12_HPWH_backup_SF_3_to_6_cost = Dhw_CZ12_HPWH_bu_SF_3_to_6_cost + Dhw_CZ12_HPWH_bu2_SF_3_to_6_cost,
+         Dhw_CZ12_HPWH_bu_SF_3_to_6_cost_mixed = Dhw_CZ12_HPWH_bu_SF_3_to_6_kWh_mixed * rate,
+         
+         Dhw_CZ12_ERWH_SF_10_to_1_cost = Dhw_CZ12_ERWH_SF_10_to_1_kWh * rate,
+         Dhw_CZ12_ERWH_SF_10_to_1_mixed_cost = Dhw_CZ12_ERWH_SF_10_to_1_kWh_mixed * rate,
+         #Dhw_CZ1_HPWH_SF_10_to_1_cost = Dhw_CZ1_HPWH_SF_10_to_1_kWh * rate,
+         Dhw_CZ12_HPWH_bu_SF_10_to_1_cost = Dhw_CZ12_HPWH_bu_SF_10_to_1_kWh * rate,
+         Dhw_CZ12_HPWH_bu2_SF_10_to_1_cost = Dhw_CZ12_HPWH_bu2_SF_10_to_1_kWh * rate,
+         Dhw_CZ12_HPWH_backup_SF_10_to_1_cost = Dhw_CZ12_HPWH_bu_SF_10_to_1_cost + Dhw_CZ12_HPWH_bu2_SF_10_to_1_cost,
+         Dhw_CZ12_HPWH_bu_SF_10_to_1_cost_mixed = Dhw_CZ12_HPWH_bu_SF_10_to_1_kWh_mixed * rate,
+         
+         Dhw_CZ12_therm_cost = Dhw_CZ12_therm * rate_therm)
+```
+
+#plot cost
+```{r}
+CZ12_145_cost_summary <- CZ12_145 %>%
+  group_by(Mon) %>%
+  summarise(total_Dhw_CZ12_ERWH_SF_bc_cost = sum(Dhw_CZ12_ERWH_SF_bc_cost), 
+            #total_Dhw_CZ1_HPWH_SF_bc_cost = sum(Dhw_CZ1_HPWH_SF_bc_cost), 
+            total_Dhw_CZ12_HPWH_backup_SF_bc_cost = sum(Dhw_CZ12_HPWH_backup_SF_bc_cost),
+            
+            total_Dhw_CZ12_ERWH_SF_3_to_6_cost = sum(Dhw_CZ12_ERWH_SF_3_to_6_cost), 
+            total_Dhw_CZ12_ERWH_SF_3_to_6_mixed_cost = sum(Dhw_CZ12_ERWH_SF_3_to_6_mixed_cost),
+            #total_Dhw_CZ1_HPWH_SF_3_to_6_cost = sum(Dhw_CZ1_HPWH_SF_3_to_6_cost), 
+            total_Dhw_CZ12_HPWH_backup_SF_3_to_6_cost = sum(Dhw_CZ12_HPWH_backup_SF_3_to_6_cost),
+            total_Dhw_CZ12_HPWH_backup_SF_3_to_6_cost_mixed = sum(Dhw_CZ12_HPWH_bu_SF_3_to_6_cost_mixed),
+            
+            total_Dhw_CZ12_ERWH_SF_10_to_1_cost = sum(Dhw_CZ12_ERWH_SF_10_to_1_cost),
+            total_Dhw_CZ12_ERWH_SF_10_to_1_mixed_cost = sum(Dhw_CZ12_ERWH_SF_10_to_1_mixed_cost),
+            #total_Dhw_CZ1_HPWH_SF_10_to_1_cost = sum(Dhw_CZ1_HPWH_SF_10_to_1_cost),
+            total_Dhw_CZ12_HPWH_backup_SF_10_to_1_cost = sum(Dhw_CZ12_HPWH_backup_SF_10_to_1_cost),
+            total_Dhw_CZ12_HPWH_backup_SF_10_to_1_cost_mixed = sum(Dhw_CZ12_HPWH_bu_SF_10_to_1_cost_mixed),
+            
+            total_Dhw_CZ12_therm_cost = sum(Dhw_CZ12_therm_cost))
+
+
+CZ12_145_cost_summary <- subset(CZ12_145_cost_summary, select = -Mon)
+annualCost <- data.frame(wh_type = names(CZ12_145_cost_summary), annual_cost = colSums(CZ12_145_cost_summary))
+
+annualCost <- 
+  annualCost %>% 
+    mutate(type = case_when(wh_type == "total_Dhw_CZ12_ERWH_SF_bc_cost" ~ "ERWH",
+                                 #wh_type == "total_Dhw_CZ3_HPWH_SF_bc_cost" ~ "HPWH",
+                                 wh_type == "total_Dhw_CZ12_HPWH_backup_SF_bc_cost" ~ "HPWH_bu",
+                            
+                                 wh_type == "total_Dhw_CZ12_ERWH_SF_3_to_6_cost" ~ "ERWH",
+                                  wh_type == "total_Dhw_CZ12_ERWH_SF_3_to_6_mixed_cost" ~ "mixed ERWH",
+                                 #wh_type == "total_Dhw_CZ3_HPWH_SF_3_to_6_cost" ~ "HPWH",
+                                 wh_type == "total_Dhw_CZ12_HPWH_backup_SF_3_to_6_cost" ~ "HPWH_bu",
+                                 wh_type == "total_Dhw_CZ12_HPWH_backup_SF_3_to_6_cost_mixed" ~ "mixed HPWH_bu",
+                            
+                           wh_type == "total_Dhw_CZ12_ERWH_SF_10_to_1_cost" ~ "ERWH",
+                           wh_type == "total_Dhw_CZ12_ERWH_SF_10_to_1_mixed_cost" ~ "mixed ERWH",
+                           #wh_type == "total_Dhw_CZ3_HPWH_SF_10_to_1_cost" ~ "HPWH",
+                           wh_type == "total_Dhw_CZ12_HPWH_backup_SF_10_to_1_cost" ~ "HPWH_bu",
+                           wh_type == "total_Dhw_CZ12_HPWH_backup_SF_10_to_1_cost_mixed" ~ "mixed HPWH_bu",
+                           
+                           wh_type == "total_Dhw_CZ12_therm_cost" ~ "NGWH"))
+
+#annualCost <- colSums(CZ1_145_cost_summary[,c(2:11)]) %>%
+#as.data.frame(wH_type = names(CZ1_145_cost_summary))
+
+ggplot(annualCost, aes(x = wh_type , y = annual_cost)) + geom_col(aes(fill = type)) + theme_gray(base_size = 13) + labs(x = "Case Scenario", y = "Cost ($)") + 
+  scale_x_discrete(labels=c("total_Dhw_CZ12_ERWH_SF_bc_cost" = "base", 
+                            #"total_Dhw_CZ3_HPWH_SF_bc_cost" = "base",
+                            "total_Dhw_CZ12_HPWH_backup_SF_bc_cost" = "base",
+                            "total_Dhw_CZ12_ERWH_SF_3_to_6_cost" = "3 to 6",
+                            "total_Dhw_CZ12_ERWH_SF_3_to_6_mixed_cost" = "mixed 3 to 6",
+                            #"total_Dhw_CZ3_HPWH_SF_3_to_6_cost" = "3 to 6",
+                            "total_Dhw_CZ12_HPWH_backup_SF_3_to_6_cost" = "3 to 6",
+                            "total_Dhw_CZ12_HPWH_backup_SF_3_to_6_cost_mixed" = "mixed 3 to 6",
+                            "total_Dhw_CZ12_ERWH_SF_10_to_1_cost" = "10 to 1",
+                            "total_Dhw_CZ12_ERWH_SF_10_to_1_mixed_cost" = "mixed 10 to 1",
+                            #"total_Dhw_CZ3_HPWH_SF_10_to_1_cost" = "10 to 1",
+                            "total_Dhw_CZ12_HPWH_backup_SF_10_to_1_cost" = "10 to 1",
+                            "total_Dhw_CZ12_HPWH_backup_SF_10_to_1_cost_mixed" = "mixed 10 to 1",
+                            "total_Dhw_CZ12_therm_cost" = "base")) +
+   theme(axis.text.x = element_text(size=12, angle=45))
 
 ```
 
