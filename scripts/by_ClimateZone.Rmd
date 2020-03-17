@@ -1,0 +1,113 @@
+
+```{r}
+library(tidyverse)    # System of packages for data manipulation 
+library(tidyselect)   # Backend for selecting functions of the tidyverse
+library(magrittr)     # To include pipe like operator %>%
+library(readr)        # Package to read data, .csv files
+library(lubridate)    # To handle date time data
+library(data.table)   # Data structure 
+library(hms)
+library(dplyr)
+
+theme_pack <- theme(axis.title = element_text(size = 12),
+                    axis.text = element_text(size = 10),
+                    strip.text = element_text(size = 10))
+```
+
+```{r}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+ #set wd to project directory, instead of the markdown file location as the directory
+```
+
+# Plot by CZ_145
+```{r}
+CZ_energy <- read_csv("energy_table.csv")
+```
+
+```{r}
+CZ_energy_melted <- CZ_energy %>% gather(key = "type", value = "energy", c(-Climate_Zone))
+```
+
+
+```{r}
+CZ_energy_melted <- filter(CZ_energy_melted, type %in% c("ERWH 3 to 6 mixed","ERWH 10 to 1 mixed","HPWH 10 to 1 mixed","HPWH 3 to 6 mixed"))
+ggplot(CZ_energy_melted, aes(x = as.factor(Climate_Zone) , y = energy, fill = type)) + geom_bar(stat="identity", position=position_dodge()) + theme_gray(base_size = 13) + labs(x = "Climate Zone", y = "Energy (kWh/year)") + scale_fill_brewer(palette = "Set1")
+```
+```{r}
+CZ_current_cost <- read_csv("current_cost_table.csv")
+CZ_current_cost_melted <- CZ_current_cost %>% gather(key = "type", value = "energy", c(-Climate_Zone))
+```
+
+```{r}
+CZ_current_cost_melted <- filter(CZ_current_cost_melted, type %in% c("NGWH","ERWH 3 to 6 mixed","ERWH 10 to 1 mixed","HPWH 10 to 1 mixed","HPWH 3 to 6 mixed"))
+ggplot(CZ_current_cost_melted, aes(x = as.factor(Climate_Zone) , y = energy, fill = type)) + geom_bar(stat="identity", position=position_dodge()) + theme_gray(base_size = 13) + labs(x = "Climate Zone", y = "Cost ($/year)") + scale_fill_brewer(palette = "Set1")
+```
+
+```{r}
+CZ_future_cost <- read_csv("future_cost_table.csv")
+CZ_future_cost_melted <- CZ_current_cost %>% gather(key = "type", value = "energy", c(-Climate_Zone))
+```
+
+```{r}
+CZ_future_cost_melted <- filter(CZ_future_cost_melted, type %in% c("NGWH","ERWH 3 to 6 mixed","ERWH 10 to 1 mixed","HPWH 10 to 1 mixed","HPWH 3 to 6 mixed"))
+ggplot(CZ_future_cost_melted, aes(x = as.factor(Climate_Zone) , y = energy, fill = type)) + geom_bar(stat="identity", position=position_dodge()) + theme_gray(base_size = 13) + labs(x = "Climate Zone", y = "Cost ($/year)") + scale_fill_brewer(palette = "Set1")
+```
+
+```{r}
+CZ_ghg <- read_csv("ghg_table.csv")
+CZ_ghg_melted <- CZ_ghg %>% gather(key = "type", value = "energy", c(-Climate_Zone))
+```
+
+```{r}
+CZ_ghg_melted <- filter(CZ_ghg_melted, type %in% c("NGWH","ERWH 3 to 6 mixed","ERWH 10 to 1 mixed","HPWH 10 to 1 mixed","HPWH 3 to 6 mixed"))
+ggplot(CZ_ghg_melted, aes(x = as.factor(Climate_Zone) , y = energy, fill = type)) + geom_bar(stat="identity", position=position_dodge()) + theme_gray(base_size = 13) + labs(x = "Climate Zone", y = "GHG Emissions (lb CO2/year)") + scale_fill_brewer(palette = "Set1")
+```
+
+
+
+
+#### Multifamily 
+
+```{r}
+CZ_energy <- read_csv("energy_table_MF.csv")
+```
+
+```{r}
+CZ_energy_melted <- CZ_energy %>% gather(key = "type", value = "energy", c(-Climate_Zone))
+```
+
+
+```{r}
+CZ_energy_melted <- filter(CZ_energy_melted, type %in% c("ERWH 3 to 6 mixed","ERWH 10 to 1 mixed","HPWH 10 to 1 mixed","HPWH 3 to 6 mixed"))
+ggplot(CZ_energy_melted, aes(x = as.factor(Climate_Zone) , y = energy, fill = type)) + geom_bar(stat="identity", position=position_dodge()) + theme_gray(base_size = 13) + labs(x = "Climate Zone", y = "Energy (kWh/year)") + scale_fill_brewer(palette = "Set1")
+```
+
+```{r}
+CZ_current_cost <- read_csv("current_cost_table_MF.csv")
+CZ_current_cost_melted <- CZ_current_cost %>% gather(key = "type", value = "energy", c(-Climate_Zone))
+```
+
+```{r}
+CZ_current_cost_melted <- filter(CZ_current_cost_melted, type %in% c("NGWH","ERWH 3 to 6 mixed","ERWH 10 to 1 mixed","HPWH 10 to 1 mixed","HPWH 3 to 6 mixed"))
+ggplot(CZ_current_cost_melted, aes(x = as.factor(Climate_Zone) , y = energy, fill = type)) + geom_bar(stat="identity", position=position_dodge()) + theme_gray(base_size = 13) + labs(x = "Climate Zone", y = "Cost ($/year)") + scale_fill_brewer(palette = "Set1")
+```
+
+```{r}
+CZ_future_cost <- read_csv("future_cost_table_MF.csv")
+CZ_future_cost_melted <- CZ_current_cost %>% gather(key = "type", value = "energy", c(-Climate_Zone))
+```
+
+```{r}
+CZ_future_cost_melted <- filter(CZ_future_cost_melted, type %in% c("NGWH","ERWH 3 to 6 mixed","ERWH 10 to 1 mixed","HPWH 10 to 1 mixed","HPWH 3 to 6 mixed"))
+ggplot(CZ_future_cost_melted, aes(x = as.factor(Climate_Zone) , y = energy, fill = type)) + geom_bar(stat="identity", position=position_dodge()) + theme_gray(base_size = 13) + labs(x = "Climate Zone", y = "Cost ($/year)") + scale_fill_brewer(palette = "Set1")
+```
+
+```{r}
+CZ_ghg <- read_csv("ghg_table_MF.csv")
+CZ_ghg_melted <- CZ_ghg %>% gather(key = "type", value = "energy", c(-Climate_Zone))
+```
+
+```{r}
+CZ_ghg_melted <- filter(CZ_ghg_melted, type %in% c("NGWH","ERWH 3 to 6 mixed","ERWH 10 to 1 mixed","HPWH 10 to 1 mixed","HPWH 3 to 6 mixed"))
+ggplot(CZ_ghg_melted, aes(x = as.factor(Climate_Zone) , y = energy, fill = type)) + geom_bar(stat="identity", position=position_dodge()) + theme_gray(base_size = 13) + labs(x = "Climate Zone", y = "GHG Emissions (lb CO2/year)") + scale_fill_brewer(palette = "Set1")
+```
